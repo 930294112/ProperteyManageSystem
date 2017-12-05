@@ -19,7 +19,7 @@ public class MainController {
 
 
     /*----------
-    |  666  暗送   |
+    |  666   |
     ========== */
 
     @RequestMapping(value = "/welcome")
