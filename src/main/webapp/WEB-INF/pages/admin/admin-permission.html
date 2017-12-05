@@ -30,20 +30,17 @@
 			<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜权限节点</button>
 		</form>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_permission_add('添加权限节点','admin-permission-add.html','','310')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
-	<table class="table table-border table-bordered table-bg">
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_permission_add('添加权限节点','admin-permission-add.html','','310')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span></div>
+	<table class="table table-border table-bordered table-bg table-sort">
 		<thead>
-			<tr>
-				<th scope="col" colspan="7">权限节点</th>
-			</tr>
-			<tr class="text-c">
+		<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th width="40">名称</th>
 				<th width="100">权限名称</th>
 				<th width="100">上级菜单</th>
 				<th width="25">类型</th>
 				<th width="100">链接</th>
-				<th width="=100">创建时间</th>
+				<th width="100">创建时间</th>
 				<th width="40">创建人</th>
 				<th width="25">排序</th>
 				<th width="25">状态</th>
@@ -61,7 +58,7 @@
 				<td>1</td>
 				<td>1</td>
 				<td>1</td>
-				<td></td>
+				<td>1</td>
 				<td><a title="编辑" href="javascript:;" onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_permission_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 			</tr>
 		</tbody>
@@ -84,6 +81,15 @@
 	w		弹出层宽度（缺省调默认值）
 	h		弹出层高度（缺省调默认值）
 */
+$('.table-sort').dataTable({
+	"aaSorting": [[ 8, "desc" ]],//默认第几个排序
+	"bStateSave": true,//状态保存
+	"pading":false,
+	"aoColumnDefs": [
+		//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		{"orderable":false,"aTargets":[0,10]}// 不参与排序的列
+	]
+});
 /*管理员-权限-添加*/
 function admin_permission_add(title,url,w,h){
 	layer_show(title,url,w,h);
