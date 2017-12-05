@@ -18,6 +18,10 @@ public class MainController {
     }
 
 
+    /*----------
+    |  666  暗送   |
+    ========== */
+
     @RequestMapping(value = "/welcome")
     public String welcome() {
         return "welcome";
