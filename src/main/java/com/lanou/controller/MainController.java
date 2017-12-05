@@ -17,11 +17,6 @@ public class MainController {
         return "login";
     }
 
-
-    /*----------
-    |  666   |
-    ========== */
-
     @RequestMapping(value = "/welcome")
     public String welcome() {
         return "welcome";
