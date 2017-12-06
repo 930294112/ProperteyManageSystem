@@ -304,7 +304,7 @@
             var exportList = this.exportDivElements;
             if (exportList) {
                 // Set tabindex on the menu items to allow focusing by script
-                // Set role to give screen readers a chance to pick up the contents
+                // Set sys to give screen readers a chance to pick up the contents
                 each(exportList, function(item) {
                     if (item.tagName === 'DIV' &&
                         !(item.children && item.children.length)) {

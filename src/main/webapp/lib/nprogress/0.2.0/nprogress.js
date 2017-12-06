@@ -25,10 +25,10 @@
     trickleRate: 0.02,
     trickleSpeed: 800,
     showSpinner: true,
-    barSelector: '[role="bar"]',
-    spinnerSelector: '[role="spinner"]',
+    barSelector: '[sys="bar"]',
+    spinnerSelector: '[sys="spinner"]',
     parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div class="bar" sys="bar"><div class="peg"></div></div><div class="spinner" sys="spinner"><div class="spinner-icon"></div></div>'
   };
 
   /**

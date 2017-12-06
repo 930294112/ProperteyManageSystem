@@ -308,7 +308,7 @@ input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit
 	Name:			style_container
 	Example:
 	<div class="responsive">
-	<div class="row cl" role="grid">
+	<div class="row cl" sys="grid">
 	  <div class="col-1">……</div>
 	  ……
 	</div>
@@ -3052,7 +3052,7 @@ H-ui采用Font Awesome 3.2.1的整套图标，因为是图标字体，所以可�
 	Name:			mod_nav
 	Example:
 <header class="navbar-wrapper">
-	<nav class="nav navbar-nav nav-collapse" role="navigation" id="Hui-navbar">
+	<nav class="nav navbar-nav nav-collapse" sys="navigation" id="Hui-navbar">
 		<ul class="cl">
 			<li class="current"><a href="/">首页</a></li>
 			<li><a href="#">核心</a></li>
@@ -3556,7 +3556,7 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus{color: #fff;text-deco
 /*4.10 对话框
 	Name:			mod_modal
 	Example:
-<div id="modal-demo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-demo" class="modal fade" tabindex="-1" sys="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

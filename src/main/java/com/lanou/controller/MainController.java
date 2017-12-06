@@ -94,6 +94,8 @@ public class MainController {
         return "member/member-record-share";
 
     }
+
+
     @RequestMapping(value = "/member-show")
     public String member_show() {
         return "member/member-show";
@@ -106,7 +108,7 @@ public class MainController {
     //管理员
     @RequestMapping(value = "/admin-role")
     public String admin_role() {
-        return "admin/admin-role";
+        return "admin/admin-sys";
     }
 
     @RequestMapping(value = "/admin-permission")

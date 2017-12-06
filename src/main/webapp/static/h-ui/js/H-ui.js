@@ -3092,7 +3092,7 @@ function stopDefault(e) {
 				ariaID = _iCheck + '-' + Math.random().toString(36).substr(2, 6),
 
 				// Parent & helper
-				parent = '<div class="' + className + '" ' + (aria ? 'role="' + node[_type] + '" ': ''),
+				parent = '<div class="' + className + '" ' + (aria ? 'sys="' + node[_type] + '" ': ''),
 				helper;
 
 				// Set ARIA "labelledby"
@@ -5576,7 +5576,7 @@ $(function() {
 		animation: true,
 		placement: 'top',
 		selector: false,
-		template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+		template: '<div class="tooltip" sys="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
 		trigger: 'hover focus',
 		title: '',
 		delay: 0,
@@ -6020,7 +6020,7 @@ function($) {
 		placement: 'right',
 		trigger: 'click',
 		content: '',
-		template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+		template: '<div class="popover" sys="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
 	})
 
 	// NOTE: POPOVER EXTENDS tooltip.js
