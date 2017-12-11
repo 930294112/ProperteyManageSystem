@@ -1,71 +1,86 @@
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="renderer" content="webkit|ie-comp|ie-stand">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<!--[if lt IE 9]>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--分页插件-->
+    <!--<%&#45;&#45;这个是bootstrap好用的前提,在最上边&#45;&#45;%>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!--[if lt IE 9]>
     <script type="text/javascript" src="../lib/html5shiv.js"></script>
     <script type="text/javascript" src="../lib/respond.min.js"></script>
     <![endif]-->
-<link rel="stylesheet" type="text/css" href="../static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="../lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/style.css" />
-<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="../static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/Hui-iconfont/1.0.8/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/style.css"/>
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <!--[if IE 6]>
     <script type="text/javascript" src="../lib/DD_belatedPNG_0.0.8a-min.js"></script>
     <script>DD_belatedPNG.fix('*');</script>
+    <script type="javascript" src="/js/jquery-3.2.1.js"></script>
     <![endif]-->
-<title>菜单管理</title>
+    <title>菜单管理</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 权限管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span
+        class="c-gray en">&gt;</span> 权限管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+                                              href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="text-c">
-		<form class="Huiform" method="post" action="" target="_self">
-			<input type="text" class="input-text" style="width:250px" placeholder="权限名称" id="" name="">
-			<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜权限节点</button>
-		</form>
-	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_permission_add('添加权限节点','admin-permission-add.html','','310')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
-	<table class="table table-border table-bordered table-bg">
-		<thead>
-			<tr>
-				<th scope="col" colspan="7">权限节点</th>
-			</tr>
-			<tr class="text-c">
-				<th width="25"><input type="checkbox" name="" value=""></th>
-				<th width="40">名称</th>
-				<th width="100">权限名称</th>
-				<th width="100">上级菜单</th>
-				<th width="25">类型</th>
-				<th width="100">链接</th>
-				<th width="=100">创建时间</th>
-				<th width="40">创建人</th>
-				<th width="25">排序</th>
-				<th width="25">状态</th>
-				<th width="100">操作</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="text-c">
-				<td><input type="checkbox" value="1" name=""></td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td></td>
-				<td><a title="编辑" href="javascript:;" onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_permission_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-			</tr>
-		</tbody>
-	</table>
+    <div class="text-c">
+        <form class="Huiform" method="post" action="" target="_self">
+            <input type="text" class="input-text" style="width:250px" placeholder="权限名称" id="menuName" name="">
+            <button type="button" class="btn btn-success" onclick="menuQuery()" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜权限节点
+            </button>
+        </form>
+    </div>
+    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadelMenu()"
+                                                               class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a
+            href="javascript:;" onclick="admin_permission_add()"
+            class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span></div>
+    <table class="table table-border table-bordered table-bg table-sort">
+        <thead>
+        <tr class="text-c">
+            <th width="25"><input type="checkbox" name="" value=""></th>
+            <th width="40">名称</th>
+            <th width="100">权限名称</th>
+            <th width="100">上级菜单</th>
+            <th width="25">类型</th>
+            <th width="100">链接</th>
+            <th width="100">创建时间</th>
+            <th width="40">创建人</th>
+            <th width="25">排序
+                <i class="fa fa-sort-asc" aria-hidden="true" onclick="sort(this)"></i></th>
+            <th width="25">状态</th>
+            <th width="100">操作</th>
+        </tr>
+
+        </thead>
+
+        <tbody id="tab">
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-9">
+            <nav aria-label="Page navigation">
+                <ul class="pagination" id="page">
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
 </div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
@@ -74,51 +89,187 @@
 <script type="text/javascript" src="../static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="../lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<!--<script type="text/javascript" src="../lib/datatables/1.10.0/jquery.dataTables.min.js"></script>-->
 <script type="text/javascript">
-/*
-	参数解释：
-	title	标题
-	url		请求的url
-	id		需要操作的数据id
-	w		弹出层宽度（缺省调默认值）
-	h		弹出层高度（缺省调默认值）
-*/
-$('.table-sort').dataTable({
-	"aaSorting": [[ 8, "desc" ]],//默认第几个排序
-	"bStateSave": true,//状态保存
-	"pading":false,
-	"aoColumnDefs": [
-		//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-		{"orderable":false,"aTargets":[0,10]}// 不参与排序的列
-	]
-});
-/*管理员-权限-添加*/
-function admin_permission_add(title,url,w,h){
-	layer_show(title,url,w,h);
-}
-/*管理员-权限-编辑*/
-function admin_permission_edit(title,url,id,w,h){
-	layer_show(title,url,w,h);
-}
 
-/*管理员-权限-删除*/
-function admin_permission_del(obj,id){
-	layer.confirm('确认要删除吗？',function(index){
-		$.ajax({
-			type: 'POST',
-			url: '',
-			dataType: 'json',
-			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
-			},
-			error:function(data) {
-				console.log(data.msg);
-			},
-		});		
-	});
-}
+    //点击菜单管理之后显示查询所有
+    pageAllMenu(null, 1, 3);
+
+    function showPage(result) {
+        //首页
+        var firstPage = $("<li><a href='#' onclick='pageAllMenu(6," + 1 + ",3)'>首页</a>></li>>")
+        $("#page").append(firstPage);
+        //上一页
+        var beforeLiFalse = $("<li><span><span aria-hidden='true'>&laquo;</span>></span>></li>")
+        var beforeLiTrue = $("<li><a href='#' onclick='pageAllMenu(6," + result.prePage + ",3)' aria-label='Previous'>上一页<span aria-hidden='true'>&laquo;</span>></a>></li>>")
+        var beforePage = result.hasPreviousPage ? beforeLiTrue : beforeLiFalse;
+        $("#page").append(beforePage)
+
+        // 页码显示
+        var pages = result.pages;
+        for (var i = 1; i <= pages; i++) {
+            var pageTrue = $("<li> <span>" + i + "<span class='sr-only'>(current)</span></span></li>");
+            var pageFalse = $("<li><a href='#' onclick='pageAllMenu(6," + i + ",3)'>" + i + "</a></li>");
+            var somePage = result.pageNum == i ? pageTrue : pageFalse;
+
+            $("#page").append(somePage);
+        }
+
+        // 下一页
+        var afterLiFalse = $("<li> <span> <span aria-hidden='true'>&raquo;</span> </span> </li>");
+        var afterLiTrue = $("<li> <a href='#' onclick='pageAllMenu(6," + result.nextPage + ",3)' aria-label='Next'>下一页<span aria-hidden='true'>&raquo;</span></a> </li>");
+        var afterPage = result.hasNextPage ? afterLiTrue : afterLiFalse;
+
+        $("#page").append(afterPage);
+
+        //尾页
+        var lastPage = $("<li> <a href='#' onclick='pageAllMenu(6," + result.pages + ",3)'>尾页</a> </li>");
+        $("#page").append(lastPage);
+
+        //当前页
+        var currentPage = $("<li> <a href='#'>当前第" + result.pageNum + "页</a> </li>");
+        $("#page").append(currentPage);
+
+        //共几页
+        var totalPage = $("<li> <a href='#'>共" + result.pages + "页</a> </li>");
+        $("#page").append(totalPage);
+    }
+
+    function addNewTR(Elp) {
+        var td0 = $("<td></td>");
+        var td1 = $("<td></td>").html("<p>" + Elp.name + "</p>");
+        var td2 = $("<td></td>").html("<p>" + Elp.urlkey + "</p>");
+        var td3 = $("<td></td>").html("<p>" + Elp.parent_name + "</p>");
+        var td4 = $("<td></td>").html("<p>" + Elp.type + "</p>");
+        var td5 = $("<td></td>").html("<p>" + Elp.url + "</p>");
+        var td6 = $("<td></td>").html("<p>" + Elp.create_time == 0 | Elp.create_time == null ? "" : new Date(parseInt(Elp.create_time)).toLocaleString() + "</p>");
+        var td7 = $("<td></td>").html("<p>" + Elp.role.user.username + "</p>");
+        var td8 = $("<td></td>").html("<p>" + Elp.sort + "</p>");
+        var td9 = $("<td></td>").html("<p>" + Elp.status + "</p>");
+        var td10 = $("<td></td>");
+        $("<input type='checkbox' value='1' name=''>").appendTo(td0).attr("id",Elp.id);
+        $("<i class='Hui-iconfont'>&#xe6df;</i>").appendTo(td10).click(admin_permission_edit).attr("editId",Elp.id)
+        $("<i class='Hui-iconfont'>&#xe6e2;</i>").appendTo(td10).click(admin_permission_del).attr("deleteId", Elp.id)
+
+        var append = $("<tr class='text-c'></tr>>").append(td0).append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8).append(td9).append(td10);
+        $("#tab").append(append)
+
+    }
+
+    //分页
+    function pageAllMenu(info, pageNum, pageSize) {
+        $.ajax({
+            url: "/pageAllMenu",
+            data: {
+                info: info == null ? 0 : info,
+                pageNum: pageNum,
+                pageSize: pageSize
+            },
+            success: function (result) {
+                var list = result.list;
+                $("#tab").html("");
+                $("#page").html("");
+                //调用分页方法
+                //传入两个参数 一个结果集 一个地址
+                showPage(result, "/pageAllMenu")
+//				for (var i =0;i<list.length;i++){
+//					addNewTR(list[i].name,list[i].urlkey,list[i].parent_name,list[i].type,list[i].url,list[i].create_time,
+//							list[i].role.user.username,list[i].sort,list[i].status)
+//				}
+                $.each(list, function (i, Elp) {
+                    addNewTR(Elp)
+                })
+            }
+        })
+    }
+
+    /*
+     参数解释：
+     title	标题
+     url		请求的url
+     id		需要操作的数据id
+     w		弹出层宽度（缺省调默认值）
+     h		弹出层高度（缺省调默认值）
+     */
+
+    function sort(obj) {
+        if (obj.className == "fa fa-sort-asc") {
+            pageAllMenu(1, 1, 3); //1.降序
+            obj.className = "fa fa-sort-desc";
+        } else {
+            pageAllMenu(2, 1, 3); //2.升序
+            obj.className = "fa fa-sort-asc";
+        }
+
+    }
+    /*管理员-权限-添加*/
+    function admin_permission_add() {
+        location.href = "/admin/admin-permission-add"
+
+    }
+    /*管理员-权限-编辑*/
+    function admin_permission_edit() {
+        var menuid = $(this).attr("editId")
+        location.href = "/admin/admin_permission_edie?menuid=" + menuid;
+
+
+    }
+
+    /*管理员-权限-删除*/
+    function admin_permission_del() {
+        var r = window.confirm("确定要删除此角色吗？");
+        var deleteId = $(this).attr("deleteId");
+        if (r) {
+            $.ajax({
+                type: 'POST',
+                url: '/admin/admin_permission_del',
+                data: {
+                    id: deleteId
+                },
+                success: function (result) {
+                    if (result.count > 0) {
+                        alert("删除成功")
+                        pageAllMenu(null, 1, 3)
+                    }
+                }
+
+            });
+        }
+
+    }
+
+    function datadelMenu() {
+        var r = window.confirm("确定要全部删除吗？");
+        var deleteIds = [];
+        $("input:checkbox:checked").each(function () {
+            deleteIds.push($(this).attr("id"))
+        })
+
+        if (deleteIds.length==0){
+            alert("至少选择一条进行删除")
+        }else {
+            if (r){
+                $.ajax({
+                    type:"post",
+                    url:"/admin/datadelMenu",
+                    data:{
+                        deleteIds:deleteIds
+                    },success:function (result) {
+                        if (result.count>0){
+                            alert("删除成功")
+                            pageAllMenu(null, 1, 3)
+                        }
+                    }
+                })
+            }
+        }
+    }
+
+    function menuQuery() {
+        var menuName = $("#menuName").val();
+
+    }
+
 </script>
 </body>
 </html>

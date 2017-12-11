@@ -16,7 +16,7 @@ public class Role {
     private String name;
     private String remark;
     private int sort;
-    private int status;
+    private int status; //状态//radio/2,隐藏,1,显示
     private int update_id;
     private Timestamp update_time;
 

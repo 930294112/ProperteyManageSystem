@@ -1,6 +1,9 @@
 package com.lanou.sys.user.bean;
 
+import com.lanou.sys.role.bean.Role;
+
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by dllo on 17/12/6.
@@ -26,6 +29,15 @@ public class User {
     private Timestamp create_time;
     private int create_id;
 
+    private List<Role> roles;//人拥有的角色
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
     public User() {
     }

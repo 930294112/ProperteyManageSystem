@@ -19,10 +19,23 @@
           class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath*:com/lanou/*/mapper/*.xml"/>
+
+        <!--分页(mybatis)-->
+        <property name="plugins" >
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <value>
+                            dialect=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
     <!--定义mybatis中的mapper代理接口的扫描规则-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.lanou.*.mapper"/>
+        <property name="basePackage" value="com.lanou.sys.*.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sessionFactory"/>
     </bean>
 </beans>

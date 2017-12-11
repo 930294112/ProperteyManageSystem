@@ -106,20 +106,20 @@ public class MainController {
     }
 
     //管理员
-    @RequestMapping(value = "/admin-role")
-    public String admin_role() {
-        return "admin/admin-sys";
-    }
+//    @RequestMapping(value = "/admin-role")
+//    public String admin_role() {
+//        return "admin/admin-role";
+//    }
 
-    @RequestMapping(value = "/admin-permission")
-    public String admin_permission() {
-        return "admin/admin-permission";
-    }
+//    @RequestMapping(value = "/admin-permission")
+//    public String admin_permission() {
+//        return "admin/admin-permission";
+//    }
 
-    @RequestMapping(value = "/admin-list")
-    public String admin_list() {
-        return "admin/admin-list";
-    }
+//    @RequestMapping(value = "/admin-list")
+//    public String admin_list() {
+//        return "admin/admin-list";
+//    }
 
 
 

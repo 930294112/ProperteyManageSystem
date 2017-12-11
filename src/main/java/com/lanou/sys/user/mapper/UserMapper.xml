@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.sys.user.mapper.UserMapper">
+    <resultMap id="userMap" type="com.lanou.sys.user.bean.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="realname" property="realname"/>
+        <result column="role_id" property="role_id"/>
+        <result column="usertype" property="usertype"/>
+        <result column="state" property="state"/>
+        <result column="third_id" property="third_id"/>
+        <result column="end_time" property="end_time"/>
+        <result column="email" property="email"/>
+        <result column="tel" property="tel"/>
+        <result column="address" property="address"/>
+        <result column="title_url" property="title_url"/>
+        <result column="remark" property="remark"/>
+        <result column="theme" property="theme"/>
+        <result column="back_site_id" property="back_site_id"/>
+        <result column="create_site_id" property="create_site_id"/>
+        <result column="create_time" property="create_time"/>
+        <result column="create_id" property="create_id"/>
+    </resultMap>
+    <resultMap id="ExpResultMap" type="com.lanou.sys.user.bean.User" extends="userMap">
+        <collection property="roles" ofType="com.lanou.sys.role.bean.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectById" resultMap="userMap" parameterType="integer">
+        SELECT *FROM sys_user WHERE id  IN (select userid from sys_role_user WHERE roleid = #{value} )
+    </select>
+    <select id="findAll"
+            resultMap="ExpResultMap">
+
+      SELECT u.id,u.username,u.state,u.tel,u.email,u.create_time,
+      r.id rid,r.name rname
+      FROM sys_user u
+      LEFT JOIN sys_role_user ru
+      ON u.id = ru.userId
+      LEFT JOIN sys_role r
+      ON ru.roleid = r.id
+    </select>
+
+</mapper>

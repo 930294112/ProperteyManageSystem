@@ -193,7 +193,7 @@ function layer_show(title,url,w,h){
 		w=800;
 	};
 	if (h == null || h == '') {
-		h=($(window).height() - 50);
+		h=800;
 	};
 	layer.open({
 		type: 2,

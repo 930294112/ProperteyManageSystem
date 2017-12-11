@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="Bookmark" href="/favicon.ico" >
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5shiv.js"></script>
+    <script type="text/javascript" src="../lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="../static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="../lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="../lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <!--/meta 作为公共模版分离出去-->
+
+    <title></title>
+
+</head>
+<body>
+<article class="page-container">
+    <form action="" method="post" class="form form-horizontal" id="form-admin-role-add">
+        <div class="row cl">
+
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" id="menuName">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">权限名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value=""  id="urlkey">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">上级菜单：</label>
+            <select id="parent_name">
+                <option class="p" value="-1">---请选择上级菜单---</option>
+                <option class="p" value="13" id="p1" >权限管理模块</option>
+                <option class="p" value="17" id="p2">废品管理模块</option>
+                <option class="p" value="19" id="p3">废品回收员管理模块</option>
+                <option class="p" value="21" id="p4">业主管理模块</option>
+                <option class="p" value="23" id="p5">小区管理模块</option>
+                <option class="p" value="25" id="p6">系统管理模块</option>
+            </select>
+            </select>
+            <!--<div class="formControls col-xs-8 col-sm-9">-->
+            <!--<input type="text" class="input-text" value=""  id="parentName" >-->
+            <!--</div>-->
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">状态：</label>
+            显示 <input type="radio"  value="1"  id="block" name="status" >
+            隐藏 <input type="radio"  value="2"  id="hidden" name="status" >
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">类型：</label>
+            <select id="type">
+                <option class="t" value="-1">---请选择类型---</option>
+                <option class="t" value="1" id="t1" >根目录</option>
+                <option class="t" value="2" id="t2">a标签</option>
+                <option class="t" value="3" id="t3">a标签_blank</option>
+                <option class="t" value="4" id="t4">外部url</option>
+            </select>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">链接：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value=""  id="url" >
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">角色：</label>
+            <ul id="roleName">
+                <!--<li>-->
+                <!--<input type="checkbox"  value=""   >-->
+                <!--</li>-->
+            </ul>
+
+
+        </div>
+
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <button type="button" class="btn btn-success radius" id="admin-permission-save" name="admin-permission-save" onclick="showResult()"><i class="icon-ok"></i> 确定</button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="../lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="../static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="../static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="../lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="../lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="../lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript">
+
+
+    $("#form-admin-role-add").validate({
+        rules:{
+            menuName:{
+                required:true,
+            },
+        },
+        onkeyup:false,
+        focusCleanup:true,
+        success:"valid",
+        submitHandler:function(form){
+            $(form).ajaxSubmit();
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+        }
+    });
+
+
+
+
+    function showResult() {
+        var obj= document.getElementsByName("test")
+        var roleIds=[];
+        for (k in obj){
+            if (obj[k].checked){
+                roleIds.push(obj[k].value)
+            }
+        }
+        $.ajax({
+            type:"get",
+            url:"/admin/admin-permission-editSave",
+            data:{
+                name:$("#menuName").val(),
+                urlkey:$("#urlkey").val(),
+                parent_id:$(".p:selected").val(),
+                status:$("input:radio:checked").val(),
+                type:$(".t:selected").val(),
+                url:$("#url").val(),
+                "roleIds":roleIds
+            },success:function (result) {
+                if (result.count > 0){
+                    alert("保存成功")
+                    pageAllMenu(null,1,3)
+                }
+
+            }
+        })
+    }
+
+    editShow()
+    function editShow() {
+        $.ajax({
+            type:"post",
+            url:"/findMenu",
+            success:function (result) {
+                $("#menuName").attr("value",result.map.menu.name);
+                $("#urlkey").attr("value",result.map.menu.urlkey);
+                $("#url").attr("value",result.map.menu.url);
+
+                var p = result.map.menu.parent_id
+                if(p==13){
+                    $("#p1").attr("selected",true)
+                } else if(p==17){
+                    $("#p2").attr("selected",true)
+                }else if(p==19){
+                    $("#p3").attr("selected",true)
+                }else if(p==21){
+                    $("#p4").attr("selected",true)
+                }else if(p==23){
+                    $("#p5").attr("selected",true)
+                }else if(p==25){
+                    $("#p6").attr("selected",true)
+                }
+
+                var s = result.map.menu.status
+                if (s==1){
+                    $("#block").attr("checked",true)
+                }else if(s==2){
+                    $("#hidden").attr("checked",true)
+                }
+                var t = result.map.menu.type
+                if (t==1){
+                    $("#t1").attr("selected",true)
+                }else if (t==2){
+                    $("#t2").attr("selected",true)
+                }else if(t==3){
+                    $("#t3").attr("selected",true)
+                }else if(t==4){
+                    $("#t4").attr("selected",true)
+                }
+
+
+                $.each(result.map.menu.roles,function (i,r) {
+                    $.each(result.roleList,function (i, role) {
+                        if (r.id==role.id){
+                            $("#roleName").append($("<li></li>").append(role.name).append($("<input type='checkbox' name='test' checked='checked' />").attr("value",role.id).attr("id",role.id)));
+                        }else {
+                            $("#roleName").append($("<li></li>").append(role.name).append($("<input type='checkbox' name='test'  />").attr("value",role.id).attr("id",role.id)));
+                        }
+                    })
+
+
+                })
+
+
+            }
+
+        })
+    }
+
+
+
+
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

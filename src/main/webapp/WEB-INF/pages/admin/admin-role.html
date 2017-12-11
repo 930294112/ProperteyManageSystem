@@ -1,12 +1,10 @@
 ﻿<!DOCTYPE HTML>
-<html>
+<html xmlns:c="http://www.w3.org/1999/html">
 <head>
 
-	<!--<%&#45;&#45;这个是bootstrap好用的前提,在最上边&#45;&#45;%>-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Bootstrap -->
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
-
 
 	<meta charset="utf-8">
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -14,16 +12,16 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<!--[if lt IE 9]>
-	<script type="text/javascript" src="../lib/html5shiv.js"></script>
-	<script type="text/javascript" src="../lib/respond.min.js"></script>
+	<script type="text/javascript" src="/lib/html5shiv.js"></script>
+	<script type="text/javascript" src="/lib/respond.min.js"></script>
 	<![endif]-->
-	<link rel="stylesheet" type="text/css" href="../static/h-ui/css/H-ui.min.css" />
-	<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/H-ui.admin.css" />
-	<link rel="stylesheet" type="text/css" href="../lib/Hui-iconfont/1.0.8/iconfont.css" />
-	<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/skin/default/skin.css" id="skin" />
-	<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css" />
+	<link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
+	<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css" />
 	<!--[if IE 6]>
-	<script type="text/javascript" src="../lib/DD_belatedPNG_0.0.8a-min.js"></script>
+	<script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js"></script>
 	<script>DD_belatedPNG.fix('*');</script>
 	<![endif]-->
 	<title>角色管理</title>
@@ -31,24 +29,25 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 角色管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray"> <span class="l"> <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="javascript:;" onclick="admin_role_add('添加角色','admin-role-add.html','800')"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a> </span>	<div class="text-c">
+	<div class="cl pd-5 bg-1 bk-gray"> <span class="l"> <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="javascript:;" onclick="admin_role_add()"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a> </span>	<div class="text-c">
 		<form class="Huiform" method="post" action="" target="_self">
-			<input type="text" class="input-text" style="width:250px" placeholder="" id="" name="">
-			<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i>搜索</button>
+			<input type="text" class="input-text" style="width:250px" placeholder="输入角色名称" id="roleName" name="">
+			<button type="button" class="btn btn-success" onclick="fuzzySearch()"   name=""><i class="Hui-iconfont">&#xe665;</i>搜索</button>
 		</form>
 	</div>
 	</div>
-	<table class="table table-border table-bordered table-hover table-bg table-sort">
+	<table  class="table table-border table-bordered table-hover table-b g table-sort">
 		<thead>
 		<tr>
 			<th scope="col" colspan="6">角色管理</th>
 		</tr>
 		<tr class="text-c">
-			<th width="25"><input type="checkbox" value="" name=""></th>
+			<th width="25"><input type="checkbox" onclick="datalist"></th>
 			<th width="40">名称</th>
 			<th width="40">创建时间</th>
 			<th width="40">创建人</th>
-			<th width="40">排序</th>
+            <th width="25">排序
+                <i class="fa fa-sort-asc" aria-hidden="true" onclick="sort(this)"></i></th>
 			<th width="20">状态</th>
 			<th width="20">操作</th>
 		</tr>
@@ -65,30 +64,49 @@
 		<!--</tr>-->
 
 		</tbody>
+
 	</table>
 </div>
+
+
+	<div class="row">
+		<div class="col-md-10"></div>
+		<div class="col-md-9">
+			<nav aria-label="Page navigation">
+				<ul class="pagination" id="page">
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-8"></div>
+	</div>
+
+
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="../lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="../static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="../static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="../lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<!--<script type="text/javascript" src="../lib/datatables/1.10.0/jquery.dataTables.min.js"></script>-->
 <script type="text/javascript">
 
-	$('.table-sort').dataTable({
-		"aaSorting": [[ 4, "desc" ]],//默认第几个排序
-		"bStateSave": true,//状态保存
-		"pading":false,
-		"aoColumnDefs": [
-			//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-			{"orderable":false,"aTargets":[0,6]}// 不参与排序的列
-		]
-	});
+
+
+//$('.table-sort').dataTable({
+//		"aaSorting": [[ 4, "desc" ]],//默认第几个排序
+//		"bStateSave": true,//状态保存
+//		"pading":false,
+//		"aoColumnDefs": [
+//			//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+//			{"orderable":false,"aTargets":[0,6]}// 不参与排序的列
+//		]
+//	});
 	/*管理员-角色-添加*/
-	function admin_role_add(title,url,w,h){
-		layer_show(title,url,w,h);
+	function admin_role_add(){
+		location.href = "/admin/admin-role-add"
+
+		//layer_show(title,url,w,h);
 	}
 	/*管理员-角色-编辑*/
 	function admin_role_edit(title,url,id,w,h){
@@ -112,29 +130,267 @@
 		});
 	}
 
+	//高级搜索
+function fuzzySearch() {
+    var roleName = $("#roleName").val();
+	pageAll(roleName,1,3);
+
+
+}
+
+
+
+
+
+
+	//批量删除
+function datadel() {
+	var r = window.confirm("确定要全部删除吗？");
+    //获取选取的id
+    var a = "";
+    $("input[type='checkbox']:checked").each(function () {
+        a += $(this).attr("id") + ",";
+    });
+
+
+    //没选择进行提示
+	if (a == ""){
+	    alert("至少选择一条进行删除")
+	}else {
+	    if (r) {
+            $.ajax({
+                url: "admin/datadel",
+                data: {
+                    del: a
+                },
+                success: function (result) {
+                    //修改完成
+                    if (result) {
+                        //返回当前页面
+                        alert("删除成功!")
+//                    var val = parseInt($(".current_page").html());
+                        findpageAll(null,1, 3)
+
+                    } else {
+                        alert("删除失败!")
+                    }
+
+
+                }
+            })
+        }
+	}
+
+
+
+
+
+}
+function sort(obj) {
+    if (obj.className == "fa fa-sort-asc") {
+        findpageAll(1, 1, 3); //1.降序
+        obj.className = "fa fa-sort-desc";
+    } else {
+        findpageAll(2, 1, 3); //2.升序
+        obj.className = "fa fa-sort-asc";
+    }
+
+}
+findpageAll(null,1,3);
+
+//分页+普通查询
+function findpageAll(info,pageNum, pageSize) {
+    $.ajax({
+        type:"post",
+        url:"/findpageAll",
+        data:{
+            "info": info == null ? 0 : info,
+            "pageNum":pageNum,
+            "pageSize":pageSize
+        },
+        success:function (result) {
+            var list = result.list;
+            $("#tab").html("");
+            $("#page").html("");
+
+            showPage(result,"/findpageAll")
+//				for (var i= 0;i<list.length;i++){
+//				 addNewTR(list[i].name, list[i].create_time, list[i].user.username, list[i].sort, list[i].status)
+//				}
+
+            $.each(list,function (i,Elp) {
+                addNewTR(Elp)
+            })
+
+        }
+    })
+
+}
+
 
 	//活数据
-     function addNewTR(name,create_time,create_id,sort,status) {
-		var td1 = $("<td></td>").html("<p>"+name +"</p>");
-		var td2 = $("<td></td>").html("<p>"+create_time +"</p>");
-		var td3 = $("<td></td>").html("<p>"+create_id+"</p>");
-		var td4 = $("<td></td>").html("<p>"+sort+"</p>");
-		var td5 = $("<td></td>").html("<p>"+status+"</p>");
+     function addNewTR(Elp) {
+	    var td7 = $("<td></td>")
+		var td1 = $("<td></td>").html("<p>"+Elp.name +"</p>");
+		var td2 = $("<td></td>").html("<p>" + Elp.create_time == 0 | Elp.create_time  == null ? "" : new Date(parseInt(Elp.create_time )).toLocaleString() + "</p>");
+		var td3 = $("<td></td>")
+        //.html("<p>"+Elp.user.username+"</p>");
+		var td4 = $("<td></td>").html("<p>"+Elp.sort+"</p>");
+		var td5 = $("<td></td>").html("<p>"+Elp.status+"</p>");
+		var td6 = $("<td></td>")
+//        <a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','admin-role-add.html','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+
+		 //编辑
+		 $("<i  class='Hui-iconfont'>&#xe6df;</i>").appendTo(td6)
+		 //删除
+		 $("<i  class='Hui-iconfont'>&#xe6e2;</i>").appendTo(td6).click(deleteFee).attr("deleteId",Elp.id)
 
 
-		var append = $("<tr></tr>").append(td1).append(td2).append(td3).append(td4).append(td5)
+//		 .attr("id",Elp.id)
+		 $("<input type='checkbox'/>").appendTo(td7).attr("id",Elp.id)
+
+		 var append = $("<tr class='text-c'></tr>").append(td7).append(td1).append(td2).append(td3).append(td4).append(td5).append(td6)
 		$("#tab").append(append)
 
 	 }
-	//分页
+	//分页+高级查询
+   function pageAll(roleName,pageNum, pageSize) {
+	    $.ajax({
+			url:"/pageAll",
+			data:{
+			  "name":roleName, "pageNum":pageNum, "pageSize":pageSize
+			},
+			success:function (result) {
+				var list = result.list;
 
-	function pageAll(pageNum, pageSize) {
-	    $.ajax()
+                var choose =1;
+				$("#tab").html("");
+				$("#page").html("");
 
+				showPage(result,choose,"/pageAll")
+//				for (var i= 0;i<list.length;i++){
+//				 addNewTR(list[i].name, list[i].create_time, list[i].user.username, list[i].sort, list[i].status)
+//				}
+
+				$.each(list,function (i,Elp) {
+					addNewTR(Elp)
+                })
+
+            }
+		})
+
+    }
+
+
+    function showPage(result,choose) {
+
+//	    choose来判断是高级搜索 还是 普通查询
+        var firstPage = null;
+        if (choose == 1) {
+            //首页
+            firstPage = $("<li> <a href='#' onclick='pageAll(5," + 1 + ",3)'>首页</a> </li>");
+        } else {
+
+            firstPage = $("<li> <a href='#' onclick='findpageAll(6," + 1 + ",3)'>首页</a> </li>");
+        }
+        $("#page").append(firstPage);
+
+        var beforeLiTrue = null;
+        // 上一页
+        var beforeLiFalse = $("<li> <span> <span aria-hidden='true'>&laquo;</span> </span> </li>");
+        if (choose == 1) {
+            beforeLiTrue = $("<li> <a href='#' onclick='pageAll(5," + result.prePage + ",3)' aria-label='Previous'>上一页<span aria-hidden='true'>&laquo;</span></a> </li>");
+        }else {
+            beforeLiTrue = $("<li> <a href='#' onclick='findpageAll(6," + result.prePage + ",3)' aria-label='Previous'>上一页<span aria-hidden='true'>&laquo;</span></a> </li>");
+
+        }
+        var beforePage = result.hasPreviousPage ? beforeLiTrue : beforeLiFalse;
+        $("#page").append(beforePage);
+
+        // 页码显示
+        var pages = result.pages;
+        var pageFalse = null;
+        for (var i = 1; i <= pages; i++) {
+            var pageTrue = $("<li> <span>" + i + "<span class='sr-only'>(current)</span></span></li>");
+            if (choose == 1 ) {
+                pageFalse = $("<li><a href='#' onclick='pageAll(5," + i + ",3)'>" + i + "</a></li>");
+            }else {
+                pageFalse = $("<li><a href='#' onclick='findpageAll(6," + i + ",3)'>" + i + "</a></li>");
+
+            }
+            var somePage = result.pageNum == i ? pageTrue : pageFalse;
+
+            $("#page").append(somePage);
+        }
+
+        // 下一页
+        var afterLiTrue = null;
+        var afterLiFalse = $("<li> <span> <span aria-hidden='true'>&raquo;</span> </span> </li>");
+        if (choose == 1) {
+            afterLiTrue = $("<li> <a href='#' onclick='pageAll(5," + result.nextPage + ",3)' aria-label='Next'>下一页<span aria-hidden='true'>&raquo;</span></a> </li>");
+        }else {
+            afterLiTrue = $("<li> <a href='#' onclick='findpageAll(6," + result.nextPage + ",3)' aria-label='Next'>下一页<span aria-hidden='true'>&raquo;</span></a> </li>");
+
+        }
+        var afterPage = result.hasNextPage ? afterLiTrue : afterLiFalse;
+
+        $("#page").append(afterPage);
+
+        //尾页
+        var lastPage = null;
+        if (choose == 1) {
+            lastPage = $("<li> <a href='#' onclick='pageAll(5," + result.pages + ",3)'>尾页</a> </li>");
+        }else {
+            lastPage = $("<li> <a href='#' onclick='findpageAll(6," + result.pages + ",3)'>尾页</a> </li>");
+
+        }
+        $("#page").append(lastPage);
+
+        //当前页
+        var currentPage = $("<li> <a href='#'>当前第" + result.pageNum + "页</a> </li>");
+        $("#page").append(currentPage);
+
+        //共几页
+        var totalPage = $("<li> <a href='#'>共" + result.pages + "页</a> </li>");
+        $("#page").append(totalPage);
 
 
     }
 
+
+
+	//删除
+ function deleteFee() {
+     var r = window.confirm("确定要删除此角色吗？");
+     var deleteId = $(this).attr("deleteId");
+     if (r) {
+         $.ajax({
+             url: "admin/deleteTheRole",
+             data: {
+                 id: deleteId
+             },
+			 success:function () {
+                 findpageAll(null,1,3)
+             }
+		 })
+     }
+
+ }
+
+ function ref() {
+     window.location.reload();
+
+ }
+
+
+$(function(){
+    $("#datalist").change(function(){//判断全选框的改变
+        var flage =$(this).is(":checked");//全选选中为true，否则为false
+        $("input[type=checkbox]").each(function(){
+            $(this).prop("checked",flage);
+        })
+    })
+})
 
 
 
