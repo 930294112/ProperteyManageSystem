@@ -1,4 +1,4 @@
-﻿<!--_meta 作为公共模版分离出去-->
+<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -47,9 +47,9 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">权限：</label>
             <div class="formControls col-xs-8 col-sm-9">
-             <ul id="menuName">
+                <ul id="menuName">
 
-             </ul>
+                </ul>
             </div>
         </div>
 
@@ -99,48 +99,70 @@
         });
     });
 
-    findAllMenu();
 
-    function findAllMenu() {
-        $.ajax({
-            type: "post",
-            url: "/findAllMenu",
-            success: function (result) {
-                $.each(result, function (i, menu) {
-                    $("#menuName").append($("<li></li>").append(menu.name).append($("<input type='checkbox' name='test'/>").attr("value", menu.id).attr("id",menu.id)));
-
-                })
-            }
-
-        })
-
-    }
-    function showResult() {
-        var obj= document.getElementsByName("test")
-        var menuIds=[];
-        for (k in obj){
-            if (obj[k].checked){
-                menuIds.push(obj[k].value)
-            }
-        }
-        $.ajax({
-            type: "post",
-            url: "/admin/admin-role-save",
-            data: {
-                name: $("#name").val(),
-                status: $("input:radio:checked").val(),
-                remark: $("#remark").val(),
-                "menuIds":menuIds
-            }, success: function (result) {
-                if (result.count > 0) {
-                    alert("保存成功");
-                    location.href = "/admin-role"
-
+        function showResult() {
+            var obj= document.getElementsByName("test")
+            var menuIds=[];
+            for (k in obj){
+                if (obj[k].checked){
+                    menuIds.push(obj[k].value)
                 }
             }
-        })
-    }
+            alert(menuIds)
+            $.ajax({
+                type: "post",
+                url: "/admin/admin-role-editSave",
+                data: {
+                    name: $("#name").val(),
+                    status: $("input:radio:checked").val(),
+                    remark: $("#remark").val(),
+                    "menuIds":menuIds
+                }, success: function (result) {
+                    if (result.count > 0) {
+                        alert("保存成功");
+                        location.href = "/admin-role"
 
+                    }
+                }
+            })
+        }
+
+    editRoleShow()
+    function editRoleShow() {
+        $.ajax({
+            type: "post",
+            url: "/findEditRole",
+            success: function (result) {
+                $("#name").attr("value", result.map.role.name);
+                var s = result.map.role.status
+                if (s == 1) {
+                    $("#block").attr("checked", true)
+                } else if (s == 2) {
+                    $("#hidden").attr("checked", true)
+                }
+
+                $("#remark").attr("value", result.map.role.remark)
+
+                $.each(result.menuList, function (i, menu) {
+                    $("#menuName").append($("<li></li>").append(menu.name).append($("<input type='checkbox' name='test' id='"+menu.id+"'/>").attr("value", menu.id).attr("id", menu.id)));
+                $.each(result.map.role.menus, function (i,m) {
+                    if (m.id == menu.id) {
+                        var id = String(menu.id);
+                        $("#"+id+"").attr("checked",true)
+                    }
+
+
+                    })
+
+
+                })
+
+
+            }
+        })
+
+
+    }
 
 </script>
 <!--/请在上方写此页面业务相关的脚本-->

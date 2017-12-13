@@ -19,7 +19,7 @@ public interface MenuService {
     int findMaxSort();
 
 
-    int save(Menu menu, Integer[] roleIds);
+    int save(Menu menu);
 
     int deleteByMenuId(Integer id);
 
@@ -27,5 +27,9 @@ public interface MenuService {
 
     Menu findByMenuId(Integer menuid);
 
-    int editSave(Menu menu, Integer[] roleIds);
+    int editSave(Menu menu);
+
+    List<Menu> findAllMenu();
+
+    PageInfo<Menu> pageMenuQuery(Menu menu, Integer pageNum, Integer pageSize);
 }

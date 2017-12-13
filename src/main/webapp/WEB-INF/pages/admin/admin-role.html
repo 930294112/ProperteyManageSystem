@@ -106,11 +106,12 @@
 	function admin_role_add(){
 		location.href = "/admin/admin-role-add"
 
-		//layer_show(title,url,w,h);
+
 	}
 	/*管理员-角色-编辑*/
-	function admin_role_edit(title,url,id,w,h){
-		layer_show(title,url,w,h);
+	function admin_role_edit(){
+		var roleid = $(this).attr("editId")
+		location.href = "/admin/admin-role-edit?roleid="+roleid
 	}
 	/*管理员-角色-删除*/
 	function admin_role_del(obj,id){
@@ -200,11 +201,11 @@ findpageAll(null,1,3);
 
 //分页+普通查询
 function findpageAll(info,pageNum, pageSize) {
+
     $.ajax({
-        type:"post",
-        url:"/findpageAll",
+		url:"/findpageAll",
         data:{
-            "info": info == null ? 0 : info,
+             info: info == null ? 0 : info,
             "pageNum":pageNum,
             "pageSize":pageSize
         },
@@ -214,11 +215,7 @@ function findpageAll(info,pageNum, pageSize) {
             $("#page").html("");
 
             showPage(result,"/findpageAll")
-//				for (var i= 0;i<list.length;i++){
-//				 addNewTR(list[i].name, list[i].create_time, list[i].user.username, list[i].sort, list[i].status)
-//				}
-
-            $.each(list,function (i,Elp) {
+			$.each(list,function (i,Elp) {
                 addNewTR(Elp)
             })
 
@@ -233,15 +230,14 @@ function findpageAll(info,pageNum, pageSize) {
 	    var td7 = $("<td></td>")
 		var td1 = $("<td></td>").html("<p>"+Elp.name +"</p>");
 		var td2 = $("<td></td>").html("<p>" + Elp.create_time == 0 | Elp.create_time  == null ? "" : new Date(parseInt(Elp.create_time )).toLocaleString() + "</p>");
-		var td3 = $("<td></td>")
-        //.html("<p>"+Elp.user.username+"</p>");
+		var td3 = $("<td></td>").html("<p>"+Elp.create_name+"</p>");
 		var td4 = $("<td></td>").html("<p>"+Elp.sort+"</p>");
 		var td5 = $("<td></td>").html("<p>"+Elp.status+"</p>");
 		var td6 = $("<td></td>")
 //        <a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','admin-role-add.html','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
 
 		 //编辑
-		 $("<i  class='Hui-iconfont'>&#xe6df;</i>").appendTo(td6)
+		 $("<i  class='Hui-iconfont'>&#xe6df;</i>").appendTo(td6).click(admin_role_edit).attr("editId",Elp.id)
 		 //删除
 		 $("<i  class='Hui-iconfont'>&#xe6e2;</i>").appendTo(td6).click(deleteFee).attr("deleteId",Elp.id)
 

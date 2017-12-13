@@ -40,7 +40,8 @@
     <div class="text-c">
         <form class="Huiform" method="post" action="" target="_self">
             <input type="text" class="input-text" style="width:250px" placeholder="权限名称" id="menuName" name="">
-            <button type="button" class="btn btn-success" onclick="menuQuery()" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜权限节点
+            <button type="button" class="btn btn-success" onclick="menuQuery()" id="" name=""><i class="Hui-iconfont">
+                &#xe665;</i> 搜权限节点
             </button>
         </form>
     </div>
@@ -83,10 +84,11 @@
     </div>
 </div>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="../lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="../static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="../static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
 
 <!--请在下方写此页面业务相关的脚本-->
 <!--<script type="text/javascript" src="../lib/datatables/1.10.0/jquery.dataTables.min.js"></script>-->
@@ -95,35 +97,60 @@
     //点击菜单管理之后显示查询所有
     pageAllMenu(null, 1, 3);
 
-    function showPage(result) {
+    function showPage(result, choose) {
+        var firstPage = null;
         //首页
-        var firstPage = $("<li><a href='#' onclick='pageAllMenu(6," + 1 + ",3)'>首页</a>></li>>")
+        if (choose == 1) {
+            firstPage = $("<li> <a href='#' onclick='pageMenuQuery(5," + 1 + ",3)'>首页</a> </li>");
+        } else {
+            firstPage = $("<li><a href='#' onclick='pageAllMenu(6," + 1 + ",3)'>首页</a>></li>>")
+        }
         $("#page").append(firstPage);
         //上一页
-        var beforeLiFalse = $("<li><span><span aria-hidden='true'>&laquo;</span>></span>></li>")
-        var beforeLiTrue = $("<li><a href='#' onclick='pageAllMenu(6," + result.prePage + ",3)' aria-label='Previous'>上一页<span aria-hidden='true'>&laquo;</span>></a>></li>>")
+        var beforeLiTrue = null;
+        var beforeLiFalse = $("<li> <span> <span aria-hidden='true'>&laquo;</span> </span> </li>");
+        if (choose == 1) {
+            beforeLiTrue = $("<li><a href='#' onclick='pageMenuQuery(5," + result.prePage + ",3)' aria-label='Previous'>上一页<span aria-hidden='true'>&laquo;</span>></a>></li>>")
+        } else {
+            beforeLiTrue = $("<li><a href='#' onclick='pageAllMenu(6," + result.prePage + ",3)' aria-label='Previous'>上一页<span aria-hidden='true'>&laquo;</span>></a>></li>>")
+        }
         var beforePage = result.hasPreviousPage ? beforeLiTrue : beforeLiFalse;
         $("#page").append(beforePage)
 
         // 页码显示
         var pages = result.pages;
+        var pageFalse = null;
         for (var i = 1; i <= pages; i++) {
             var pageTrue = $("<li> <span>" + i + "<span class='sr-only'>(current)</span></span></li>");
-            var pageFalse = $("<li><a href='#' onclick='pageAllMenu(6," + i + ",3)'>" + i + "</a></li>");
+            if (choose == 1) {
+                pageFalse = $("<li><a href='#' onclick='pageMenuQuery(5," + i + ",3)'>" + i + "</a></li>");
+            } else {
+                pageFalse = $("<li><a href='#' onclick='pageAllMenu(6," + i + ",3)'>" + i + "</a></li>");
+            }
             var somePage = result.pageNum == i ? pageTrue : pageFalse;
-
             $("#page").append(somePage);
         }
 
         // 下一页
+        var afterLiTrue = null;
         var afterLiFalse = $("<li> <span> <span aria-hidden='true'>&raquo;</span> </span> </li>");
-        var afterLiTrue = $("<li> <a href='#' onclick='pageAllMenu(6," + result.nextPage + ",3)' aria-label='Next'>下一页<span aria-hidden='true'>&raquo;</span></a> </li>");
+        if (choose == 1) {
+
+            afterLiTrue = $("<li> <a href='#' onclick='pageMenuQuery(5," + result.nextPage + ",3)' aria-label='Next'>下一页<span aria-hidden='true'>&raquo;</span></a> </li>");
+        } else {
+            afterLiTrue = $("<li> <a href='#' onclick='pageAllMenu(6," + result.nextPage + ",3)' aria-label='Next'>下一页<span aria-hidden='true'>&raquo;</span></a> </li>");
+        }
         var afterPage = result.hasNextPage ? afterLiTrue : afterLiFalse;
 
         $("#page").append(afterPage);
 
         //尾页
-        var lastPage = $("<li> <a href='#' onclick='pageAllMenu(6," + result.pages + ",3)'>尾页</a> </li>");
+        var lastPage = null;
+        if (choose == 1) {
+            lastPage = $("<li> <a href='#' onclick='pageMenuQuery(5," + result.pages + ",3)'>尾页</a> </li>");
+        } else {
+            lastPage = $("<li> <a href='#' onclick='pageAllMenu(6," + result.pages + ",3)'>尾页</a> </li>");
+        }
         $("#page").append(lastPage);
 
         //当前页
@@ -143,12 +170,12 @@
         var td4 = $("<td></td>").html("<p>" + Elp.type + "</p>");
         var td5 = $("<td></td>").html("<p>" + Elp.url + "</p>");
         var td6 = $("<td></td>").html("<p>" + Elp.create_time == 0 | Elp.create_time == null ? "" : new Date(parseInt(Elp.create_time)).toLocaleString() + "</p>");
-        var td7 = $("<td></td>").html("<p>" + Elp.role.user.username + "</p>");
+        var td7 = $("<td></td>").html("<p>" + Elp.create_name + "</p>");
         var td8 = $("<td></td>").html("<p>" + Elp.sort + "</p>");
         var td9 = $("<td></td>").html("<p>" + Elp.status + "</p>");
         var td10 = $("<td></td>");
-        $("<input type='checkbox' value='1' name=''>").appendTo(td0).attr("id",Elp.id);
-        $("<i class='Hui-iconfont'>&#xe6df;</i>").appendTo(td10).click(admin_permission_edit).attr("editId",Elp.id)
+        $("<input type='checkbox' value='1' name=''>").appendTo(td0).attr("id", Elp.id);
+        $("<i class='Hui-iconfont'>&#xe6df;</i>").appendTo(td10).click(admin_permission_edit).attr("editId", Elp.id)
         $("<i class='Hui-iconfont'>&#xe6e2;</i>").appendTo(td10).click(admin_permission_del).attr("deleteId", Elp.id)
 
         var append = $("<tr class='text-c'></tr>>").append(td0).append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8).append(td9).append(td10);
@@ -172,10 +199,6 @@
                 //调用分页方法
                 //传入两个参数 一个结果集 一个地址
                 showPage(result, "/pageAllMenu")
-//				for (var i =0;i<list.length;i++){
-//					addNewTR(list[i].name,list[i].urlkey,list[i].parent_name,list[i].type,list[i].url,list[i].create_time,
-//							list[i].role.user.username,list[i].sort,list[i].status)
-//				}
                 $.each(list, function (i, Elp) {
                     addNewTR(Elp)
                 })
@@ -217,9 +240,8 @@
 
     /*管理员-权限-删除*/
     function admin_permission_del() {
-        var r = window.confirm("确定要删除此角色吗？");
         var deleteId = $(this).attr("deleteId");
-        if (r) {
+        layer.confirm('确定要删除此角色吗？', function (index) {
             $.ajax({
                 type: 'POST',
                 url: '/admin/admin_permission_del',
@@ -228,13 +250,15 @@
                 },
                 success: function (result) {
                     if (result.count > 0) {
-                        alert("删除成功")
+                        layer.msg('删除成功!', {icon: 1, time: 2000});
                         pageAllMenu(null, 1, 3)
                     }
                 }
 
             });
-        }
+
+        })
+
 
     }
 
@@ -243,31 +267,56 @@
         var deleteIds = [];
         $("input:checkbox:checked").each(function () {
             deleteIds.push($(this).attr("id"))
-        })
-
-        if (deleteIds.length==0){
-            alert("至少选择一条进行删除")
-        }else {
-            if (r){
+        });
+        layer.confirm('确定要全部删除吗？', function (index) {
+            if (deleteIds.length == 0) {
+                layer.msg('至少选择一条删除!', {icon: 2, time: 3000})
+                pageAllMenu(null, 1, 3)
+            } else {
                 $.ajax({
-                    type:"post",
-                    url:"/admin/datadelMenu",
-                    data:{
-                        deleteIds:deleteIds
-                    },success:function (result) {
-                        if (result.count>0){
-                            alert("删除成功")
+                    type: "post",
+                    url: "/admin/datadelMenu",
+                    data: {
+                        deleteIds: deleteIds
+                    }, success: function (result) {
+                        if (result.count > 0) {
+                            layer.msg('删除成功!', {icon: 1, time: 2000});
                             pageAllMenu(null, 1, 3)
                         }
                     }
                 })
             }
-        }
+        })
+
+
     }
 
+    //高级查询
     function menuQuery() {
         var menuName = $("#menuName").val();
+        pageMenuQuery(menuName, 1, 3);
 
+    }
+
+    function pageMenuQuery(menuName, pageNum, pageSize) {
+        $.ajax({
+            url: "/pageMenuQuery",
+            data: {
+                "name": menuName, "pageNum": pageNum, "pageSize": pageSize
+            },
+            success: function (result) {
+                var list = result.list;
+                var choose = 1;
+                $("#tab").html("");
+                $("#page").html("");
+
+                showPage(result, choose, "/pageMenuQuery")
+                $.each(list, function (i, Elp) {
+                    addNewTR(Elp)
+                })
+
+            }
+        })
     }
 
 </script>

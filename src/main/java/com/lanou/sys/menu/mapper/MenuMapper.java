@@ -25,4 +25,8 @@ public interface MenuMapper {
     Menu findMenuById(Integer menuid);
 
     int updateMenuById(Menu menu);
+
+    List<Menu> findAllMenu();
+
+    List<Menu> findMenuByQuery(Menu menu);
 }

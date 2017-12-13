@@ -20,5 +20,10 @@ public interface RoleService {
 
     List<Role> findAllRole();
 
-    int save(Role role);
+
+    int save(Integer[] menuIds, Role role);
+
+    Role findRoleById(Integer roleid);
+
+    int editSave(Integer[] menuIds, Role role);
 }

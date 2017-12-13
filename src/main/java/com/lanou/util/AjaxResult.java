@@ -1,5 +1,6 @@
 package com.lanou.util;
 
+import com.lanou.sys.menu.bean.Menu;
 import com.lanou.sys.role.bean.Role;
 
 import java.util.List;
@@ -13,6 +14,24 @@ public class AjaxResult<T> {
     private List<T> tList;
     private Map<String,Object> map;
     private List<Role> roleList;
+    private List<Menu> menuList;
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public List<Menu> getMenuList() {
+        return menuList;
+    }
+
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
+    }
 
     public int getCount() {
         return count;

@@ -28,19 +28,30 @@ public class User {
     private int create_site_id;
     private Timestamp create_time;
     private int create_id;
+    private Timestamp update_time;
 
-    private List<Role> roles;//人拥有的角色
-
-    public List<Role> getRoles() {
-        return roles;
+    public Timestamp getUpdate_time() {
+        return update_time;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setUpdate_time(Timestamp update_time) {
+        this.update_time = update_time;
+    }
+
+    private Role role; //人对应的角色
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public User() {
     }
+
+
 
     public User(int id, String username, String password, String realname, int role_id, int usertype, int state, String third_id, Timestamp end_time, String email, String tel, String address, String title_url, String remark, String theme, int back_site_id, int create_site_id, Timestamp create_time, int create_id) {
         this.id = id;

@@ -25,25 +25,46 @@
         <result column="create_id" property="create_id"/>
     </resultMap>
     <resultMap id="ExpResultMap" type="com.lanou.sys.user.bean.User" extends="userMap">
-        <collection property="roles" ofType="com.lanou.sys.role.bean.Role">
+        <association property="role" javaType="com.lanou.sys.role.bean.Role">
             <id column="rid" property="id"/>
             <result column="rname" property="name"/>
-        </collection>
+        </association>
     </resultMap>
+    <insert id="save"
+            parameterType="com.lanou.sys.user.bean.User">
+        INSERT INTO sys_user(username,password,role_id,state,tel,email,create_time,create_id) VALUES (#{username},#{password},#{role_id},#{state},#{tel},#{email},#{create_time},#{create_id})
+    </insert>
+    <update id="changeState"
+            parameterType="com.lanou.sys.user.bean.User">
+       UPDATE sys_user SET state=#{state},update_time=#{update_time} where id=#{id}
+    </update>
+    <delete id="deleteById"
+            parameterType="int">
+        DELETE FROM  sys_user WHERE id=#{id}
+    </delete>
 
     <select id="selectById" resultMap="userMap" parameterType="integer">
         SELECT *FROM sys_user WHERE id  IN (select userid from sys_role_user WHERE roleid = #{value} )
     </select>
     <select id="findAll"
             resultMap="ExpResultMap">
-
-      SELECT u.id,u.username,u.state,u.tel,u.email,u.create_time,
+     SELECT u.id,u.username,u.role_id,u.state,u.tel,u.email,u.create_time,
       r.id rid,r.name rname
       FROM sys_user u
-      LEFT JOIN sys_role_user ru
-      ON u.id = ru.userId
       LEFT JOIN sys_role r
-      ON ru.roleid = r.id
+      ON u.role_id = r.id
+
+    </select>
+    <select id="findUserById"
+            parameterType="int"
+            resultType="com.lanou.sys.user.bean.User">
+        SELECT * FROM sys_user WHERE id=#{value}
+    </select>
+    <!--根据姓名查找用户-->
+    <select id="findUserByName"
+            parameterType="java.lang.String"
+            resultType="com.lanou.sys.user.bean.User">
+        SELECT * FROM sys_user WHERE username = #{value}
     </select>
 
 </mapper>

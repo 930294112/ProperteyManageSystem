@@ -13,4 +13,8 @@ public interface RoleMenuMapper {
     int deleteByMenuId(Integer id);
 
     List<RoleMenu> findRoleMenuByMenuId(Integer menuid);
+
+    int deleteByRoleId(Integer id);
+
+    List<RoleMenu> findRoleMenuByRoleId(Integer roleid);
 }

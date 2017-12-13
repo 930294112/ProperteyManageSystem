@@ -23,10 +23,10 @@ public class Menu {
     private Timestamp update_time; //更新时间
     private int update_id; //更新人id
 
-    private Role role; //菜单下的角色
+   // private Role role; //菜单下的角色
 
 
-    private List<Role> roles;
+   // private List<Role> roles;
 
     private String parent_name; //父名字
     private String create_name;//创建者名字
@@ -48,13 +48,13 @@ public class Menu {
         this.create_name = create_name;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
 
     public Menu() {
     }
@@ -220,11 +220,11 @@ public class Menu {
         this.update_id = update_id;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
+//    public List<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(List<Role> roles) {
+//        this.roles = roles;
+//    }
 }

@@ -1,5 +1,6 @@
 package com.lanou.sys.menu.controller;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.lanou.sys.menu.bean.Menu;
 import com.lanou.sys.menu.service.MenuService;
@@ -68,6 +69,34 @@ public class MenuController {
         return pageInfo;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/pageMenuQuery")
+    public PageInfo<Menu> pageMenuQuery(Menu menu, @RequestParam("pageNum")Integer pageNum, @RequestParam("pageSize")Integer pageSize, HttpSession session){
+        PageInfo<Menu> pageInfo = null;
+        if (!menu.getName().equals("5")){
+            session.setAttribute("menu",menu);
+            pageInfo = menuService.pageMenuQuery(menu, pageNum, pageSize);
+        }else {
+            Menu menu1 = (Menu) session.getAttribute("menu");
+            pageInfo = menuService.pageMenuQuery(menu1, pageNum, pageSize);
+        }
+        List<Menu> menus = pageInfo.getList();
+        List<Menu> list = new ArrayList<Menu>();
+        for (Menu m : menus) {
+            if (m.getParent_id()==0){
+                m.setParent_name("");
+                list.add(m);
+            }else {
+                int parent_id = m.getParent_id();
+                Menu menuByParent_id = menuService.findMenuByParent_id(parent_id);
+                menu.setParent_name(menuByParent_id.getName());
+                list.add(m);
+            }
+        }
+        pageInfo.setList(list);
+        return pageInfo;
+    }
+
     @RequestMapping(value = "admin/admin-permission-add")
     public String admin_permission_add(){
         return "admin/admin-permission-add";
@@ -82,8 +111,8 @@ public class MenuController {
 
     @ResponseBody
     @RequestMapping(value = "admin/admin-permission-save")
-    public AjaxResult<Menu> admin_permission_save(@RequestParam("roleIds[]") Integer[] roleIds,Menu menu){
-        System.out.println(roleIds);
+    public AjaxResult<Menu> admin_permission_save(Menu menu){
+
         System.out.println(menu);
         AjaxResult<Menu> result = new AjaxResult<Menu>();
         //通过parentName找到id = parent_id
@@ -96,7 +125,7 @@ public class MenuController {
         //得到sort
         int sort = menuService.findMaxSort() + 1;
         menu.setSort(sort);
-        int count = menuService.save(menu,roleIds);
+        int count = menuService.save(menu);
         result.setCount(count);
         return result;
     }
@@ -137,6 +166,7 @@ public class MenuController {
         Menu menu = (Menu) session.getAttribute("menu");
         map.put("menu",menu);
         result.setMap(map);
+
         List<Role> allRole = roleService.findAllRole();
         result.setRoleList(allRole);
         return result;
@@ -144,13 +174,13 @@ public class MenuController {
 
     @ResponseBody
     @RequestMapping(value = "/admin/admin-permission-editSave")
-    public AjaxResult<Menu> admin_permission_editSave(@RequestParam("roleIds[]") Integer[] roleIds,Menu menu,HttpSession session){
+    public AjaxResult<Menu> admin_permission_editSave(Menu menu,HttpSession session){
         Menu menuEdit = (Menu) session.getAttribute("menu");
         AjaxResult<Menu> result = new AjaxResult<Menu>();
         menu.setId(menuEdit.getId());
         menu.setUpdate_time(new Timestamp(System.currentTimeMillis()));
         menu.setUpdate_id(1);
-        int count = menuService.editSave(menu,roleIds);
+        int count = menuService.editSave(menu);
         result.setCount(count);
         return result;
     }

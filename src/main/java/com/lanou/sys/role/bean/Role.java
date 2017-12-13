@@ -1,8 +1,10 @@
 package com.lanou.sys.role.bean;
 
+import com.lanou.sys.menu.bean.Menu;
 import com.lanou.sys.user.bean.User;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by dllo on 17/12/5.
@@ -20,16 +22,35 @@ public class Role {
     private int update_id;
     private Timestamp update_time;
 
+   // private User user;
 
-    private User user;
+    private String create_name;//创建者名字
 
-    public User getUser() {
-        return user;
+    private List<Menu> menus;//角色下的菜单
+
+    public List<Menu> getMenus() {
+        return menus;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
+
+    public String getCreate_name() {
+        return create_name;
+    }
+
+    public void setCreate_name(String create_name) {
+        this.create_name = create_name;
+    }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Role() {
     }
@@ -133,4 +154,6 @@ public class Role {
     public void setUpdate_time(Timestamp update_time) {
         this.update_time = update_time;
     }
+
+
 }

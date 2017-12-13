@@ -1,6 +1,8 @@
 package com.lanou.sys.role.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.lanou.sys.menu.bean.Menu;
+import com.lanou.sys.menu.service.MenuService;
 import com.lanou.sys.role.bean.Role;
 import com.lanou.sys.role.service.RoleService;
 import com.lanou.util.AjaxResult;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dllo on 17/12/5.
@@ -21,6 +26,8 @@ public class RoleController {
 
     @Resource
     private RoleService roleService;
+    @Resource
+    private MenuService menuService;
 
     @RequestMapping(value = "/admin-role")
     public String admin_role() {
@@ -46,7 +53,7 @@ public class RoleController {
     //分页+普通查询 findpageAll
     @ResponseBody
     @RequestMapping(value = "/findpageAll")
-    public PageInfo<Role> pageAll(@RequestParam("info") Integer info,@RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize,HttpSession session) {
+    public PageInfo<Role> pageAll(@RequestParam("info")Integer info,@RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize,HttpSession session) {
         PageInfo<Role> pageInfo = null;
         if (info!=6){
             pageInfo = roleService.queryPage(info,pageNum, pageSize);
@@ -69,13 +76,12 @@ public class RoleController {
 
     @ResponseBody
     @RequestMapping(value = "admin/admin-role-save")
-    public AjaxResult<Role> admin_role_save(Role role) {
+    public AjaxResult<Role> admin_role_save(@RequestParam("menuIds[]") Integer[] menuIds,Role role) {
         AjaxResult<Role> result = new AjaxResult<Role>();
-        System.out.println(role);
         role.setCreate_time(new Timestamp(System.currentTimeMillis()));
         role.setUpdate_time(new Timestamp(System.currentTimeMillis()));
         role.setCreate_id(1);
-        int count = roleService.save(role);
+        int count = roleService.save(menuIds,role);
         result.setCount(count);
         return result;
     }
@@ -96,6 +102,40 @@ public class RoleController {
         System.out.println("del=======>" + del);
         return roleService.datadel(del);
 
+    }
+
+    //调到编辑的页面
+    @RequestMapping(value = "admin/admin-role-edit")
+    public String admin_role_edit(@RequestParam("roleid") Integer roleid,HttpSession session){
+        Role role = roleService.findRoleById(roleid);
+        System.out.println(role.getMenus());
+        session.setAttribute("role",role);
+        return "admin/admin-role-edit";
+    }
+    @ResponseBody
+    @RequestMapping(value = "/findEditRole")
+    public AjaxResult<Role> findEditRole(HttpSession session){
+        AjaxResult<Role> result = new AjaxResult<Role>();
+        Map<String,Object> map = new HashMap<String,Object>();
+        Role role = (Role) session.getAttribute("role");
+        map.put("role",role);
+        result.setMap(map);
+        List<Menu> allMenu = menuService.findAllMenu();
+        result.setMenuList(allMenu);
+        return result;
+
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/admin/admin-role-editSave")
+    public AjaxResult<Role> admin_role_editSave(@RequestParam("menuIds[]") Integer[] menuIds,Role role,HttpSession session){
+        AjaxResult<Role> result = new AjaxResult<Role>();
+        Role editRole = (Role) session.getAttribute("role");
+        role.setId(editRole.getId());
+        role.setUpdate_time(new Timestamp(System.currentTimeMillis()));
+        int count = roleService.editSave(menuIds, role);
+        result.setCount(count);
+        return result;
     }
 
 

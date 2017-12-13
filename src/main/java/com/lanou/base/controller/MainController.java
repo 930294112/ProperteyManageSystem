@@ -1,21 +1,36 @@
-package com.lanou.controller;
+package com.lanou.base.controller;
 
+import com.lanou.sys.user.bean.User;
+import com.lanou.util.AjaxResult;
+import com.lanou.util.VerifyCode;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * Created by dllo on 17/12/4.
  */
 @Controller
 public class MainController {
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/index")
     public String mainPage() {
         return "index";
     }
-    @RequestMapping(value = "/login")
-    public String loginPage() {
-        return "login";
-    }
+
+//    @RequestMapping(value = "/login")
+//    public String loginPage() {
+//        return "login";
+//    }
 
     @RequestMapping(value = "/welcome")
     public String welcome() {
@@ -100,6 +115,7 @@ public class MainController {
     public String member_show() {
         return "member/member-show";
     }
+
     @RequestMapping(value = "/member-add")
     public String member_add() {
         return "member/member-add";
@@ -120,7 +136,6 @@ public class MainController {
 //    public String admin_list() {
 //        return "admin/admin-list";
 //    }
-
 
 
     //系统统计
@@ -164,23 +179,74 @@ public class MainController {
     public String system_base() {
         return "system/system-base";
     }
+
     @RequestMapping(value = "/system-category")
     public String system_category() {
         return "system/system-category";
     }
+
     @RequestMapping(value = "/system-data")
     public String system_data() {
         return "system/system-data";
     }
+
     @RequestMapping(value = "/system-shielding")
     public String system_shielding() {
         return "system/system-shielding";
     }
+
     @RequestMapping(value = "/system-log")
     public String system_log() {
         return "system/system-log";
     }
 
+    //定位到登录
+    @RequestMapping(value = "/login")
+    public String loginPage() {
+        if (SecurityUtils.getSubject().isAuthenticated()) {
+            SecurityUtils.getSubject().logout();
+        }
+        return "login";
+    }
+
+    @RequestMapping(value = "/getVerifyCode")
+    public void getVerifyCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        VerifyCode verifyCode = new VerifyCode();
+        BufferedImage image = verifyCode.getImage();
+        request.getSession().setAttribute("verifyCode", verifyCode.getText());
+        VerifyCode.output(image, response.getOutputStream());
+
+    }
+
+    @ResponseBody
+    @RequestMapping("/checkVerifyCode")
+    public AjaxResult checkVerifyCode(String code, HttpServletRequest request) {
+        AjaxResult ajaxResult = new AjaxResult();
+        String verifyCode = (String) request.getSession().getAttribute("verifyCode");
+        if (!verifyCode.equalsIgnoreCase(code)) {
+            ajaxResult.setCount(1);
+        }
+        return ajaxResult;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/loginsubmit")
+    public AjaxResult<User> loginsubmit(User user, @RequestParam("code") String code, HttpServletRequest request, HttpSession session) throws Exception {
+        AjaxResult<User> result = new AjaxResult<User>();
+        //如果在shirospring的配置文件中,配置了表单认证过滤器,那么在这个方法中只需要处理异常即可
+        String exClassName = (String) request.getAttribute("shiroLoginFailure");
+        if (UnknownAccountException.class.getName().equals(exClassName)) {
+            result.setCount(1);
+            result.setMessage("账号不存在");
+        } else if (IncorrectCredentialsException.class.getName().equals(exClassName)) {
+            result.setCount(1);
+            result.setMessage("密码错误");
+        }
+
+        return result;
+
+
+    }
 
 
 }

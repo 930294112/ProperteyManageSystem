@@ -9,6 +9,8 @@ import com.lanou.sys.menu.mapper.RoleMenuMapper;
 import com.lanou.sys.menu.service.MenuService;
 import com.lanou.sys.role.bean.Role;
 import com.lanou.sys.role.mapper.RoleMapper;
+import com.lanou.sys.user.bean.User;
+import com.lanou.sys.user.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,6 +28,8 @@ public class MenuServiceImpl implements MenuService{
     private RoleMenuMapper roleMenuMapper;
     @Resource
     private RoleMapper roleMapper;
+    @Resource
+    private UserMapper userMapper;
     private int count;
 
     public PageInfo<Menu> queryPage(Integer info,Integer pageNum, Integer pageSize) {
@@ -41,6 +45,12 @@ public class MenuServiceImpl implements MenuService{
             PageHelper.startPage(pageNum,pageSize,"sort asc");
         }
         List<Menu> menus = menuMapper.findAll();
+        //找到创建人
+        for (Menu menu : menus) {
+            int create_id = menu.getCreate_id();
+            User user = userMapper.findUserById(create_id);
+           menu.setCreate_name(user.getUsername());
+        }
         PageInfo<Menu> pageInfo = new PageInfo<Menu>(menus);
         return pageInfo;
     }
@@ -59,18 +69,18 @@ public class MenuServiceImpl implements MenuService{
         return menuMapper.findMaxSort();
     }
 
-    public int save(Menu menu,Integer[] roleIds) {
+    public int save(Menu menu) {
         int count = menuMapper.save(menu);
-        int menuid = menuMapper.findMaxId();
+       // int menuid = menuMapper.findMaxId();
 
-        List<RoleMenu> roleMenuList = new ArrayList<RoleMenu>();
-        if (roleIds!=null && roleIds.length>0){
-            for (int i = 0; i < roleIds.length; i++) {
-                RoleMenu roleMenu = new RoleMenu(roleIds[i],menuid);
-                roleMenuList.add(roleMenu);
-            }
-            roleMenuMapper.saveRoleMenuBath(roleMenuList);
-        }
+//        List<RoleMenu> roleMenuList = new ArrayList<RoleMenu>();
+//        if (roleIds!=null && roleIds.length>0){
+//            for (int i = 0; i < roleIds.length; i++) {
+//                RoleMenu roleMenu = new RoleMenu(roleIds[i],menuid);
+//                roleMenuList.add(roleMenu);
+//            }
+//            roleMenuMapper.saveRoleMenuBath(roleMenuList);
+//        }
         return count;
     }
 
@@ -100,30 +110,51 @@ public class MenuServiceImpl implements MenuService{
         Menu menu = menuMapper.findMenuById(menuid);
         Menu menuByParent_id = menuMapper.findMenuByParent_id(menu.getParent_id());
         menu.setParent_name(menuByParent_id.getName());
-        List<RoleMenu> roleMenuByMenuId = roleMenuMapper.findRoleMenuByMenuId(menuid);
-        List<Role> roles = new ArrayList<Role>();
-        for (RoleMenu roleMenu : roleMenuByMenuId) {
-            int roleid = roleMenu.getRoleid();
-            Role role = roleMapper.findRoleById(roleid);
-            roles.add(role);
-        }
-        menu.setRoles(roles);
+
+//        List<RoleMenu> roleMenuByMenuId = roleMenuMapper.findRoleMenuByMenuId(menuid);
+//        List<Role> roles = new ArrayList<Role>();
+//        for (RoleMenu roleMenu : roleMenuByMenuId) {
+//            int roleid = roleMenu.getRoleid();
+//            Role role = roleMapper.findRoleById(roleid);
+//            roles.add(role);
+//        }
+//        menu.setRoles(roles);
         return menu;
     }
 
-    public int editSave(Menu menu, Integer[] roleIds) {
+    public int editSave(Menu menu) {
         int count = menuMapper.updateMenuById(menu);
-        //先删除menuId对应的角色
-        roleMenuMapper.deleteByMenuId(menu.getId());
-        //在增加
-        List<RoleMenu> roleMenuList = new ArrayList<RoleMenu>();
-        if (roleIds!=null && roleIds.length>0){
-            for (int i = 0; i < roleIds.length; i++) {
-                RoleMenu roleMenu = new RoleMenu(roleIds[i],menu.getId());
-                roleMenuList.add(roleMenu);
-            }
-            roleMenuMapper.saveRoleMenuBath(roleMenuList);
-        }
+//        //先删除menuId对应的角色
+//        roleMenuMapper.deleteByMenuId(menu.getId());
+//        //在增加
+//        List<RoleMenu> roleMenuList = new ArrayList<RoleMenu>();
+//        if (roleIds!=null && roleIds.length>0){
+//            for (int i = 0; i < roleIds.length; i++) {
+//                RoleMenu roleMenu = new RoleMenu(roleIds[i],menu.getId());
+//                roleMenuList.add(roleMenu);
+//            }
+//            roleMenuMapper.saveRoleMenuBath(roleMenuList);
+//        }
         return count;
+    }
+
+    public List<Menu> findAllMenu() {
+       return menuMapper.findAllMenu();
+    }
+
+    public PageInfo<Menu> pageMenuQuery(Menu menu, Integer pageNum, Integer pageSize) {
+        pageNum = pageNum == null ? 1 :pageNum;
+        pageSize = pageSize == null ? 3 :pageSize;
+        PageHelper.startPage(pageNum,pageSize);
+
+        List<Menu> menus= menuMapper.findMenuByQuery(menu);
+        for (Menu menu1: menus) {
+            int create_id = menu1.getCreate_id();
+            User user = userMapper.findUserById(create_id);
+            menu.setCreate_name(user.getUsername());
+        }
+        PageInfo<Menu> pageInfo = new PageInfo<Menu>(menus);
+
+        return pageInfo;
     }
 }

@@ -19,16 +19,16 @@
                 <result column="update_time" property="update_time"/>
                 <result column="update_id" property="update_id"/>
         </resultMap>
-        <resultMap id="ExpResultMap" type="com.lanou.sys.menu.bean.Menu" extends="menuMap">
-                <association property="role" javaType="com.lanou.sys.role.bean.Role">
-                        <id column="rid" property="id"/>
-                        <result column="rname" property="name"/>
-                       <association property="user" javaType="com.lanou.sys.user.bean.User">
-                          <id column="uid" property="id"/>
-                          <result column="uname" property="username"/>
-                       </association>
-                </association>
-        </resultMap>
+        <!--<resultMap id="ExpResultMap" type="com.lanou.sys.menu.bean.Menu" extends="menuMap">-->
+                <!--<association property="role" javaType="com.lanou.sys.role.bean.Role">-->
+                        <!--<id column="rid" property="id"/>-->
+                        <!--<result column="rname" property="name"/>-->
+                       <!--<association property="user" javaType="com.lanou.sys.user.bean.User">-->
+                          <!--<id column="uid" property="id"/>-->
+                          <!--<result column="uname" property="username"/>-->
+                       <!--</association>-->
+                <!--</association>-->
+        <!--</resultMap>-->
     <!--保存节点-->
     <insert id="save"
             parameterType="com.lanou.sys.menu.bean.Menu">
@@ -44,20 +44,22 @@
     </delete>
 
     <select id="findAll"
-           resultMap="ExpResultMap">
-          SELECT m.id,m.parent_id,m.icon,m.name,m.urlkey,m.url,m.status,m.type,m.sort,m.level,m.create_time,m.create_id,m.update_time,m.update_id,
-          r.id rid,r.name rname,
-          u.id uid,u.username uname
-          FROM sys_menu m
-          LEFT JOIN sys_role_menu rm
-          ON m.id = rm.menuid
-          LEFT JOIN sys_role r
-          ON rm.roleid = r.id
-          LEFT JOIN sys_role_user ru
-          ON r.id = ru.roleid
-          LEFT JOIN sys_user u
-          ON ru.userid = u.id
-          WHERE m.status = 1
+           resultMap="menuMap">
+--           SELECT m.id,m.parent_id,m.icon,m.name,m.urlkey,m.url,m.status,m.type,m.sort,m.level,m.create_time,m.create_id,m.update_time,m.update_id,
+--           r.id rid,r.name rname,
+--           u.id uid,u.username uname
+--           FROM sys_menu m
+--           LEFT JOIN sys_role_menu rm
+--           ON m.id = rm.menuid
+--           LEFT JOIN sys_role r
+--           ON rm.roleid = r.id
+--           LEFT JOIN sys_role_user ru
+--           ON r.id = ru.roleid
+--           LEFT JOIN sys_user u
+--           ON ru.userid = u.id
+--           WHERE m.status = 1
+
+          SELECT * FROM sys_menu
 
   </select>
     <!--根据parent_id找到menu得到parentName-->
@@ -82,6 +84,15 @@
             parameterType="int"
             resultType="com.lanou.sys.menu.bean.Menu">
         SELECT * FROM sys_menu WHERE id = #{value}
+    </select>
+    <select id="findAllMenu"
+            resultType="com.lanou.sys.menu.bean.Menu">
+        SELECT * FROM sys_menu
+    </select>
+    <select id="findMenuByQuery"
+            parameterType="com.lanou.sys.menu.bean.Menu"
+            resultMap="menuMap">
+       SELECT * FROM sys_menu WHERE name LIKE CONCAT('%',#{name},'%')
     </select>
 
 </mapper>

@@ -14,8 +14,8 @@
         <result property="update_id" column="update_id"/>
         <result property="update_time" column="update_time"/>
 
-        <association property="user" column="id" javaType="com.lanou.sys.user.bean.User"
-                    select="com.lanou.sys.user.mapper.UserMapper.selectById"/>
+        <!--<association property="user" column="id" javaType="com.lanou.sys.user.bean.User"-->
+                    <!--select="com.lanou.sys.user.mapper.UserMapper.selectById"/>-->
 
 
     </resultMap>
@@ -23,6 +23,11 @@
             parameterType="com.lanou.sys.role.bean.Role">
         INSERT INTO sys_role(name,status,sort,remark,create_time,create_id,update_time) VALUES (#{name},#{status},#{sort},#{remark},#{create_time},#{create_id},#{update_time})
     </insert>
+    <update id="updateRoleById"
+            parameterType="com.lanou.sys.role.bean.Role">
+         UPDATE sys_role SET name=#{name},status=#{status},remark=#{remark},update_time=#{update_time} where id=#{id}
+
+    </update>
 
 
     <select id="findAll" resultMap="roleMap">
@@ -42,15 +47,20 @@
         SELECT max(sort) FROM sys_role
 
     </select>
+    <!--找到最大的roleId-->
+    <select id="findMaxRoleId"
+            resultType="java.lang.Integer">
+        SELECT max(id) FROM sys_role
+    </select>
 
 
     <delete id="deleteByRoleId"  parameterType="java.lang.Integer">
         DELETE  FROM sys_role WHERE id =#{id}
     </delete>
 
-    <delete id="deleteForU_RoleId" parameterType="java.lang.Integer">
-        DELETE  FROM  sys_role_user WHERE  roleid = #{id}
-    </delete>
+    <!--<delete id="deleteForU_RoleId" parameterType="java.lang.Integer">-->
+        <!--DELETE  FROM  sys_role_user WHERE  roleid = #{id}-->
+    <!--</delete>-->
 
 
 

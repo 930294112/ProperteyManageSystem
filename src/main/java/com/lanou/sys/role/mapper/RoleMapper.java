@@ -15,7 +15,7 @@ public interface RoleMapper {
 
     int deleteByRoleId(Integer id);
 
-    int deleteForU_RoleId(Integer id);
+    //int deleteForU_RoleId(Integer id);
 
     List<Role> findAllGJ(Role role);
 
@@ -24,4 +24,8 @@ public interface RoleMapper {
     int findMaxSort();
 
     int save(Role role);
+
+    int findMaxRoleId();
+
+    int updateRoleById(Role role);
 }
