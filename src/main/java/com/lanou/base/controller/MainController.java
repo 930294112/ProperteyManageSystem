@@ -37,15 +37,23 @@ public class MainController {
         return "welcome";
     }
 
+
     @RequestMapping(value = "/article-list")
     public String article_list() {
         return "article/article-list";
     }
 
-    @RequestMapping(value = "/picture-list")
-    public String picture_list() {
-        return "picture/picture-list";
-    }
+
+//    @RequestMapping(value = "/picture-list")
+//    public String picture_list() {
+//        return "picture/picture-list";
+//    }
+//
+//    @RequestMapping(value = "/picture-add")
+//    public String picture_add() {
+//        return "picture/picture-add";
+//    }
+
 
     @RequestMapping(value = "/product-brand")
     public String product_brand() {

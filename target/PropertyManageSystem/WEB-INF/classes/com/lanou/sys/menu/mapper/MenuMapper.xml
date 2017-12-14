@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.sys.menu.mapper.MenuMapper">
+        <resultMap id="menuMap" type="com.lanou.sys.menu.bean.Menu">
+                <id column="id" property="id"/>
+                <result column="parent_id" property="parent_id"/>
+                <result column="icon" property="icon"/>
+                <result column="name" property="name"/>
+                <result column="urlkey" property="urlkey"/>
+                <result column="url" property="url"/>
+                <result column="status" property="status"/>
+                <result column="type" property="type"/>
+                <result column="sort" property="sort"/>
+                <result column="level" property="level"/>
+                <result column="create_time" property="create_time"/>
+                <result column="create_id" property="create_id"/>
+                <result column="update_time" property="update_time"/>
+                <result column="update_id" property="update_id"/>
+        </resultMap>
+        <!--<resultMap id="ExpResultMap" type="com.lanou.sys.menu.bean.Menu" extends="menuMap">-->
+                <!--<association property="role" javaType="com.lanou.sys.role.bean.Role">-->
+                        <!--<id column="rid" property="id"/>-->
+                        <!--<result column="rname" property="name"/>-->
+                       <!--<association property="user" javaType="com.lanou.sys.user.bean.User">-->
+                          <!--<id column="uid" property="id"/>-->
+                          <!--<result column="uname" property="username"/>-->
+                       <!--</association>-->
+                <!--</association>-->
+        <!--</resultMap>-->
+    <!--保存节点-->
+    <insert id="save"
+            parameterType="com.lanou.sys.menu.bean.Menu">
+        INSERT INTO sys_menu(parent_id,name,urlkey,url,status,type,sort,level,create_time,create_id,update_time) VALUES (#{parent_id},#{name},#{urlkey},#{url},#{status},#{type},#{sort},#{level},#{create_time},#{create_id},#{update_time})
+    </insert>
+    <update id="updateMenuById"
+                parameterType="com.lanou.sys.menu.bean.Menu">
+        UPDATE sys_menu SET parent_id=#{parent_id},name=#{name},urlkey=#{urlkey},url=#{url},status=#{status},type=#{type},update_time=#{update_time},update_id=#{update_id} where id=#{id}
+    </update>
+    <delete id="deleteByMenuId"
+            parameterType="int">
+        DELETE FROM  sys_menu WHERE id=#{id}
+    </delete>
+
+    <select id="findAll"
+           resultMap="menuMap">
+--           SELECT m.id,m.parent_id,m.icon,m.name,m.urlkey,m.url,m.status,m.type,m.sort,m.level,m.create_time,m.create_id,m.update_time,m.update_id,
+--           r.id rid,r.name rname,
+--           u.id uid,u.username uname
+--           FROM sys_menu m
+--           LEFT JOIN sys_role_menu rm
+--           ON m.id = rm.menuid
+--           LEFT JOIN sys_role r
+--           ON rm.roleid = r.id
+--           LEFT JOIN sys_role_user ru
+--           ON r.id = ru.roleid
+--           LEFT JOIN sys_user u
+--           ON ru.userid = u.id
+--           WHERE m.status = 1
+
+          SELECT * FROM sys_menu
+
+  </select>
+    <!--根据parent_id找到menu得到parentName-->
+    <select id="findMenuByParent_id"
+            resultMap="menuMap">
+    SELECT * FROM sys_menu WHERE id =#{value}
+    </select>
+    <!--根据parentName 找到 menu 得到 parent_id-->
+    <select id="findMenuByName"
+            parameterType="java.lang.String"
+            resultMap="menuMap">
+        SELECT * FROM sys_menu WHERE name=#{value}
+    </select>
+    <select id="findMaxSort"
+            resultType="int">
+       SELECT max(sort) FROM sys_menu
+    </select>
+    <select id="findMaxId" resultType="int">
+        SELECT max(id) FROM sys_menu
+    </select>
+    <select id="findMenuById"
+            parameterType="int"
+            resultType="com.lanou.sys.menu.bean.Menu">
+        SELECT * FROM sys_menu WHERE id = #{value}
+    </select>
+    <select id="findAllMenu"
+            resultType="com.lanou.sys.menu.bean.Menu">
+        SELECT * FROM sys_menu
+    </select>
+    <select id="findMenuByQuery"
+            parameterType="com.lanou.sys.menu.bean.Menu"
+            resultMap="menuMap">
+       SELECT * FROM sys_menu WHERE name LIKE CONCAT('%',#{name},'%')
+    </select>
+
+</mapper>

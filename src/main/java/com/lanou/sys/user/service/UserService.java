@@ -3,6 +3,7 @@ package com.lanou.sys.user.service;
 import com.github.pagehelper.PageInfo;
 import com.lanou.sys.role.mapper.RoleMapper;
 import com.lanou.sys.user.bean.User;
+import com.lanou.sys.user.bean.ext.ExtUser;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface UserService {
     int deleteById(Integer id);
 
     List<Integer> deleteByIds(Integer[] deleteIds);
+
+    PageInfo<User> fuzzyQueryPage(ExtUser extUser, Integer pageNum, Integer pageSize);
 }

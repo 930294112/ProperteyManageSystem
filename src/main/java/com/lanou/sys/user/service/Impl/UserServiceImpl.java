@@ -3,6 +3,7 @@ package com.lanou.sys.user.service.Impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lanou.sys.user.bean.User;
+import com.lanou.sys.user.bean.ext.ExtUser;
 import com.lanou.sys.user.mapper.UserMapper;
 import com.lanou.sys.user.service.UserService;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,18 @@ public class UserServiceImpl implements UserService {
             }
         }
         return list;
+
+    }
+
+    public PageInfo<User> fuzzyQueryPage(ExtUser extUser, Integer pageNum, Integer pageSize) {
+        pageNum = pageNum == null ? 1 :pageNum;
+        pageSize = pageSize == null ? 3 :pageSize;
+        PageHelper.startPage(pageNum,pageSize);
+        List<User> all = userMapper.fuzzyFindAll(extUser);
+
+        PageInfo<User> rolePageInfo = new PageInfo<User>(all);
+
+        return rolePageInfo;
 
     }
 }

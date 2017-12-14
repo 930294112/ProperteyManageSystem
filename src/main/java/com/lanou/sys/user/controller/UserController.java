@@ -6,6 +6,7 @@ import com.lanou.sys.menu.service.MenuService;
 import com.lanou.sys.role.bean.Role;
 import com.lanou.sys.role.service.RoleService;
 import com.lanou.sys.user.bean.User;
+import com.lanou.sys.user.bean.ext.ExtUser;
 import com.lanou.sys.user.service.UserService;
 import com.lanou.util.AjaxResult;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -46,6 +47,17 @@ public class UserController {
     @RequestMapping(value = "/pageAllUser")
     public PageInfo<User> pageAllUser( @RequestParam("pageNum")Integer pageNum, @RequestParam("pageSize")Integer pageSize, HttpSession session){
         PageInfo<User> pageInfo = userService.queryPage(pageNum, pageSize);
+        return pageInfo;
+    }
+
+    /**
+     * 分页 + 高级查询
+     */
+    @ResponseBody
+    @RequestMapping("/findPageAll")
+    public PageInfo<User> findPageAll(ExtUser extUser, @RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize, HttpSession session) {
+        System.out.println(111);
+        PageInfo<User> pageInfo = userService.fuzzyQueryPage(extUser,pageNum, pageSize);
         return pageInfo;
     }
 

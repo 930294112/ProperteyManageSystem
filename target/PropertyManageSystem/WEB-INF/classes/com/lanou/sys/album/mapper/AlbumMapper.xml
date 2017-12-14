@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.sys.album.mapper.AlbumMapper">
+
+    <select id="findAll"
+            resultType="com.lanou.sys.album.bean.Album">
+        SELECT * FROM tb_image_album
+    </select>
+</mapper>

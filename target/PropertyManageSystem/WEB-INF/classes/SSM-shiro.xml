@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <description>Shiro安全配置</description>
+
+    <!-- 启用shiro授权注解拦截 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+
+        <!-- 配置securityManager -->
+        <property name="securityManager" ref="securityManager"/>
+
+        <!-- 如果没有认证成功, 需要跳转到的地址 -->
+        <property name="loginUrl" value="/login"/>
+
+        <!-- 没有权限跳转的页面 -->
+        <!--<property name="unauthorizedUrl" value="/unauthorized"/>-->
+
+        <!-- 自定义过滤器 -->
+        <property name="filters">
+            <map>
+                <entry key="authc" value-ref="formAuthenticationFilter"/>
+            </map>
+        </property>
+        <!--过滤器链-->
+        <property name="filterChainDefinitions">
+            <value>
+                <!--资源=处理的过滤器  anon:代表资源可以匿名访问-->
+                /js/** = anon
+                /css/** = anon
+                /lib/** = anon
+                /static/** = anon
+                /temp/** = anon
+                <!--实现验证码,可以匿名访问-->
+                /getVerifyCode=anon
+                /checkVerifyCode=anon
+
+
+                <!--authc:需要认证的-->
+                /loginsubmit = authc
+                /index = authc
+                <!--/**=authc-->
+                <!--退出-->
+                <!--/logout = logout-->
+                <!--必须要有管理员(admin)身份才可以进行访问-->
+                <!--roles[XX] 代表 有XX角色可以访问-->
+                <!--/role/list = roles[admin],authc-->
+
+                <!--user:通过了认证/通过remember me认证通过可以访问-->
+                /** = user
+            </value>
+        </property>
+    </bean>
+    <!-- 配置进行授权和认证的realm, 需要自定义 -->
+    <bean id="myRealm" class="com.lanou.base.realm.MyRealm"/>
+
+    <!-- 配置SecurityManager 需要一个Realm -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm"/>
+    </bean>
+
+
+    <!-- 表单认证过滤器可以配置, 可以不配置
+        如果不配置的话, 先不要自己实现Subject.login代码 -->
+    <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
+        <!-- 表单中账号的input 的name-->
+        <property name="usernameParam" value="username"/>
+
+        <property name="passwordParam" value="password"/>
+
+        <!-- 配置用户认证地址 -->
+        <property name="loginUrl" value="/loginsubmit"/>
+    </bean>
+</beans>

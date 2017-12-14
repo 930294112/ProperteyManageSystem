@@ -1,6 +1,7 @@
 package com.lanou.sys.user.mapper;
 
 import com.lanou.sys.user.bean.User;
+import com.lanou.sys.user.bean.ext.ExtUser;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface UserMapper {
     int changeState(User user);
 
     int deleteById(Integer id);
+
+    List<User> fuzzyFindAll(ExtUser extUser);
+
 }
