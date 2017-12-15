@@ -9,18 +9,18 @@ import java.util.List;
  * Created by dllo on 17/12/6.
  */
 public class User {
-    private int id;
-    private String username;
-    private String password;
-    private String realname;
-    private int role_id;
-    private int usertype;
-    private int state;
+    private int id; //用户id
+    private String username; //用户名
+    private String password; //密码
+    private String realname; //真实姓名
+    private int role_id; //对应的角色id
+    private int usertype; //用户类型
+    private int state; //状态
     private String third_id;
     private Timestamp end_time;
-    private String email;
-    private String tel;
-    private String address;
+    private String email; //邮箱
+    private String tel; //电话
+    private String address; //地址
     private String title_url;
     private String remark;
     private String theme;

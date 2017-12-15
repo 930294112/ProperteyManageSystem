@@ -36,6 +36,8 @@ public class MyRealm extends AuthorizingRealm {
      * @return
      */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+
+        
         return null;
     }
 

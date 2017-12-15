@@ -21,7 +21,12 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
-
+    /**
+     * 分页 + 高级查询
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     public PageInfo<User> queryPage(Integer pageNum, Integer pageSize) {
         pageNum = pageNum == null ? 1 :pageNum;
         pageSize = pageSize == null ? 3 :pageSize;
@@ -33,10 +38,20 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    /**
+     * 保存用户
+     * @param user
+     * @return
+     */
     public int save(User user) {
         return userMapper.save(user);
     }
 
+    /**
+     * 更改状态
+     * @param user
+     * @return
+     */
     public int changeState(User user) {
         int state = user.getState();
         if (state==1){
@@ -47,11 +62,21 @@ public class UserServiceImpl implements UserService {
         return userMapper.changeState(user);
     }
 
+    /**
+     * 根据id删除
+     * @param id
+     * @return
+     */
     public int deleteById(Integer id) {
        return userMapper.deleteById(id);
 
     }
 
+    /**
+     * 根据id批量删除
+     * @param deleteIds
+     * @return
+     */
     public List<Integer> deleteByIds(Integer[] deleteIds) {
         int count = 0;
         List <Integer> list = new ArrayList<Integer>();
@@ -65,6 +90,13 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    /**
+     * 高级查询 + 分页
+     * @param extUser
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     public PageInfo<User> fuzzyQueryPage(ExtUser extUser, Integer pageNum, Integer pageSize) {
         pageNum = pageNum == null ? 1 :pageNum;
         pageSize = pageSize == null ? 3 :pageSize;

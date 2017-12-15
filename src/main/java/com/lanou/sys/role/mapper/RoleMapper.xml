@@ -13,54 +13,49 @@
         <result property="status" column="status"/>
         <result property="update_id" column="update_id"/>
         <result property="update_time" column="update_time"/>
-
-        <!--<association property="user" column="id" javaType="com.lanou.sys.user.bean.User"-->
-                    <!--select="com.lanou.sys.user.mapper.UserMapper.selectById"/>-->
-
-
     </resultMap>
+    <!--保存角色-->
     <insert id="save"
             parameterType="com.lanou.sys.role.bean.Role">
         INSERT INTO sys_role(name,status,sort,remark,create_time,create_id,update_time) VALUES (#{name},#{status},#{sort},#{remark},#{create_time},#{create_id},#{update_time})
     </insert>
+
+    <!--根据角色id修改-->
     <update id="updateRoleById"
             parameterType="com.lanou.sys.role.bean.Role">
          UPDATE sys_role SET name=#{name},status=#{status},remark=#{remark},update_time=#{update_time} where id=#{id}
 
     </update>
-
-
+    <!--查询所有角色-->
     <select id="findAll" resultMap="roleMap">
         SELECT  * FROM sys_role
     </select>
 
+    <!--根据权限节点名称高级收缩-->
     <select id="findAllGJ" resultMap="roleMap" parameterType="com.lanou.sys.role.bean.Role">
         SELECT  *FROM sys_role WHERE name LIKE CONCAT('%',#{name},'%')
     </select>
+
+    <!--根据id查询角色-->
     <select id="findRoleById"
             parameterType="int"
             resultType="com.lanou.sys.role.bean.Role">
         SELECT * FROM sys_role WHERE id = #{value}
     </select>
+    <!--找到做大的排序数-->
     <select id="findMaxSort"
             resultType="int">
         SELECT max(sort) FROM sys_role
-
-    </select>
+   </select>
     <!--找到最大的roleId-->
     <select id="findMaxRoleId"
             resultType="java.lang.Integer">
         SELECT max(id) FROM sys_role
     </select>
-
-
+    <!--根据角色id删除-->
     <delete id="deleteByRoleId"  parameterType="java.lang.Integer">
         DELETE  FROM sys_role WHERE id =#{id}
     </delete>
-
-    <!--<delete id="deleteForU_RoleId" parameterType="java.lang.Integer">-->
-        <!--DELETE  FROM  sys_role_user WHERE  roleid = #{id}-->
-    <!--</delete>-->
 
 
 

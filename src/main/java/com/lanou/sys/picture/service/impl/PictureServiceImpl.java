@@ -18,6 +18,12 @@ public class PictureServiceImpl implements PictureService {
     @Resource
     private PictureMapper pictureMapper;
 
+    /**
+     * 分页 + 高级查询
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     public PageInfo<Picture> findAllPicture(Integer pageNum, Integer pageSize) {
         pageNum = pageNum == null ? 1 :pageNum;
         pageSize = pageSize == null ? 3 :pageSize;
@@ -28,6 +34,11 @@ public class PictureServiceImpl implements PictureService {
 
     }
 
+    /**
+     * 保存图片
+     * @param picture
+     * @return
+     */
     public int save(Picture picture) {
         return pictureMapper.save(picture);
     }

@@ -112,6 +112,12 @@ public class RoleController {
         session.setAttribute("role",role);
         return "admin/admin-role-edit";
     }
+
+    /**
+     * 编辑前表单回显
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/findEditRole")
     public AjaxResult<Role> findEditRole(HttpSession session){
@@ -126,6 +132,13 @@ public class RoleController {
 
     }
 
+    /**
+     * 编辑保存
+     * @param menuIds 编辑的id
+     * @param role
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/admin/admin-role-editSave")
     public AjaxResult<Role> admin_role_editSave(@RequestParam("menuIds[]") Integer[] menuIds,Role role,HttpSession session){

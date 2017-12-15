@@ -35,10 +35,19 @@ public class RoleServiceImpl implements RoleService {
     private MenuMapper menuMapper;
 
 
+    /**
+     * 分页 + 查询所有 + 排序
+     * @param info 条件
+     * @param pageNum 起始页
+     * @param pageSize 条数
+     * @return
+     */
     public PageInfo<Role> queryPage(Integer info,Integer pageNum, Integer pageSize) {
         pageNum = pageNum == null ? 1 :pageNum;
         pageSize = pageSize == null ? 3 :pageSize;
         PageHelper.startPage(pageNum,pageSize);
+
+        //判断是升序还是降序
         if(info==0){
             PageHelper.startPage(pageNum,pageSize);
         }
@@ -48,6 +57,8 @@ public class RoleServiceImpl implements RoleService {
         if (info==2){
             PageHelper.startPage(pageNum,pageSize,"sort asc");
         }
+
+        //查询所有的角色
         List<Role> all = roleMapper.findAll();
         for (Role role : all) {
             int create_id = role.getCreate_id();
@@ -60,6 +71,11 @@ public class RoleServiceImpl implements RoleService {
         return rolePageInfo;
     }
 
+    /**
+     * 单个删除 + 批量删除
+     * @param id
+     * @return
+     */
     public boolean deleteTheRole(Integer id) {
         try {
             roleMapper.deleteByRoleId(id);
@@ -84,6 +100,11 @@ public class RoleServiceImpl implements RoleService {
         return rolePageInfo;
     }
 
+    /**
+     * 批量删除
+     * @param del
+     * @return
+     */
     public boolean datadel(String del) {
         String[] split = del.split(",");
         try {
@@ -105,6 +126,13 @@ public class RoleServiceImpl implements RoleService {
         return roleMapper.findAll();
     }
 
+
+    /**
+     * 保存
+     * @param menuIds
+     * @param role
+     * @return
+     */
     public int save(Integer[]menuIds,Role role) {
         int sort = roleMapper.findMaxSort() + 1;
         role.setSort(sort);
@@ -124,6 +152,11 @@ public class RoleServiceImpl implements RoleService {
 
     }
 
+    /**
+     * 根据id找到角色
+     * @param roleid
+     * @return
+     */
     public Role findRoleById(Integer roleid) {
         Role role = roleMapper.findRoleById(roleid);
         List<RoleMenu> roleMenuByRoleId = roleMenuMapper.findRoleMenuByRoleId(roleid);
@@ -138,6 +171,12 @@ public class RoleServiceImpl implements RoleService {
         return role;
     }
 
+    /**
+     * 保存编辑
+     * @param menuIds
+     * @param role
+     * @return
+     */
     public int editSave(Integer[] menuIds, Role role) {
         int count = roleMapper.updateRoleById(role);
         roleMenuMapper.deleteByRoleId(role.getId());

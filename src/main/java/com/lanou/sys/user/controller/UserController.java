@@ -61,11 +61,19 @@ public class UserController {
         return pageInfo;
     }
 
+    /**
+     * 调到用户增加的界面
+     * @return
+     */
     @RequestMapping(value = "admin/admin-add")
     public String admin_add(){
         return "/admin/admin-add";
     }
 
+    /**
+     * 查询所有的角色
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/findAllAdminRole")
     public List<Role> findAllRole(){
@@ -73,6 +81,12 @@ public class UserController {
         return roles;
     }
 
+    /**
+     * 增加角色保存
+     * @param user
+     * @param password2
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "admin/admin-save")
     public AjaxResult<User> admin_save(User user,String password2){
@@ -93,6 +107,11 @@ public class UserController {
 
         return result;
     }
+
+    /**
+     * 查询所有的菜单
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/findAllMenu")
     public List<Menu> findAllMenu(){
@@ -100,6 +119,11 @@ public class UserController {
         return menus;
     }
 
+    /**
+     * 改变的状态
+     * @param user
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/admin_changeState")
     public AjaxResult<User> admin_changeState(User user){
@@ -110,6 +134,12 @@ public class UserController {
         return result;
     }
 
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+
     @ResponseBody
     @RequestMapping(value = "admin/admin_del")
     public AjaxResult<User> admin_del(@RequestParam("id") Integer id){
@@ -118,6 +148,12 @@ public class UserController {
         result.setCount(count);
         return result;
     }
+
+    /**
+     * 批量删除用户
+     * @param deleteIds
+     * @return
+     */
 
     @ResponseBody
     @RequestMapping(value = "/databath")

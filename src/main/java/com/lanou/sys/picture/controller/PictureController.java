@@ -39,6 +39,12 @@ public class PictureController {
     }
 
 
+    /**
+     * 查询所有的图片
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/findAllPicture")
     public PageInfo<Picture> findAllPicture(@RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize) {
@@ -48,6 +54,10 @@ public class PictureController {
     }
 
 
+    /**
+     * 调到增加的界面
+     * @return
+     */
     @RequestMapping(value = "picture/picture-add")
     public String picture_add() {
         return "picture/picture-add";
@@ -56,6 +66,12 @@ public class PictureController {
     @Resource
     private HttpServletRequest request;
 
+    /**
+     * 保存图片
+     * @param picture
+     * @param file
+     * @return
+     */
     @RequestMapping(value = "/picture_save")
     public String picture_save(Picture picture, @RequestParam("file") MultipartFile file) {
         String type = null;
@@ -64,6 +80,7 @@ public class PictureController {
                 type = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
             if (type != null) {
                 if (("GIF".equals(type.toUpperCase()) || "PNG".equals(type.toUpperCase()) || "JPG".equals(type.toUpperCase()))) {
+                   //获取真实路径
                     String realPath = request.getSession().getServletContext().getRealPath("/temp");
                     File newPath = new File(realPath);
                     if (!newPath.exists()){
@@ -71,15 +88,17 @@ public class PictureController {
                     }
 
                     System.out.println(newPath);
-
+                    //给名字加上当前的时间 避免名字重复
                     String trueFileName = String.valueOf(System.currentTimeMillis() + fileName);
                     File desPath = new File(newPath,trueFileName);
 
                     try {
+                        //保存图片
                         FileUtils.writeByteArrayToFile(desPath,file.getBytes());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    //保存图片的路径到数据中
                     picture.setSrc("temp/" + trueFileName);
 
                 }
@@ -90,8 +109,6 @@ public class PictureController {
         picture.setState(1);
         System.out.println(picture);
         pictureService.save(picture);
-
-
         return "redirect:picture-list";
     }
 

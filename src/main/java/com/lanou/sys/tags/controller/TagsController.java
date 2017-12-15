@@ -16,6 +16,11 @@ import java.util.List;
 public class TagsController {
     @Resource
     private TagsService tagsService;
+
+    /**
+     * 查询所有标签
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/findAllTags")
     public List<Tags> findAllTags(){

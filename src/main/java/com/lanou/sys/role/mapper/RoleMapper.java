@@ -15,8 +15,6 @@ public interface RoleMapper {
 
     int deleteByRoleId(Integer id);
 
-    //int deleteForU_RoleId(Integer id);
-
     List<Role> findAllGJ(Role role);
 
     Role findRoleById(int roleid);

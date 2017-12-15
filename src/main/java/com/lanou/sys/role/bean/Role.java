@@ -10,19 +10,15 @@ import java.util.List;
  * Created by dllo on 17/12/5.
  */
 public class Role {
-
-
-    private int create_id;
-    private Timestamp create_time;
-    private int id;
-    private String name;
-    private String remark;
-    private int sort;
+    private int create_id; //创建者id
+    private Timestamp create_time; //创建时间
+    private int id; //角色id
+    private String name; //角色名字
+    private String remark; //评论
+    private int sort; //排序
     private int status; //状态//radio/2,隐藏,1,显示
-    private int update_id;
-    private Timestamp update_time;
-
-   // private User user;
+    private int update_id; //更新人id
+    private Timestamp update_time; //更新时间
 
     private String create_name;//创建者名字
 
@@ -43,14 +39,6 @@ public class Role {
     public void setCreate_name(String create_name) {
         this.create_name = create_name;
     }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     public Role() {
     }

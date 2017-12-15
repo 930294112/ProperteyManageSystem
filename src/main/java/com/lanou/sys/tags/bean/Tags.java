@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class Tags {
     private int id;
     private int article_id;
-    private String tagname;
+    private String tagname; //标签名字
     private Timestamp update_time;
     private Timestamp create_time;
     private int update_id;
