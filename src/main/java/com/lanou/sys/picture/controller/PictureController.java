@@ -28,6 +28,7 @@ import java.sql.Timestamp;
  * Created by dllo on 17/12/13.
  */
 @Controller
+@RequestMapping(value = "/picture")
 public class PictureController {
 
     @Resource
@@ -58,7 +59,7 @@ public class PictureController {
      * 调到增加的界面
      * @return
      */
-    @RequestMapping(value = "picture/picture-add")
+    @RequestMapping(value = "/picture-add")
     public String picture_add() {
         return "picture/picture-add";
     }
@@ -99,7 +100,7 @@ public class PictureController {
                         e.printStackTrace();
                     }
                     //保存图片的路径到数据中
-                    picture.setSrc("temp/" + trueFileName);
+                    picture.setSrc("/temp/" + trueFileName);
 
                 }
             }

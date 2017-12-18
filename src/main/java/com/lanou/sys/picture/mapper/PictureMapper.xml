@@ -6,7 +6,7 @@
     <!--保存图片-->
     <insert id="save"
             parameterType="com.lanou.sys.picture.bean.Picture">
-        INSERT INTO picture(name,classify,src,Tags,update_time) VALUES (#{name},#{classify},#{src},#{Tags},#{update_time})
+        INSERT INTO picture(name,classify,src,tags,update_time,state) VALUES (#{name},#{classify},#{src},#{tags},#{update_time},#{state})
     </insert>
 
     <!--查询所有-->

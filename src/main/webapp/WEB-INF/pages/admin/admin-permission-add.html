@@ -135,7 +135,7 @@
         function showResult() {
             $.ajax({
                 type:"post",
-                url:"/admin/admin-permission-save",
+                url:"/menu/admin-permission-save",
                 data:{
                 name:$("#menuName").val(),
                 urlkey:$("#urlkey").val(),
@@ -147,7 +147,7 @@
             },success:function (result) {
                     if (result.count > 0){
                         layer.msg('添加成功!', {icon: 1, time: 6000});
-                        window.location.href = "/admin-permission"
+                        window.location.href = "/menu/admin-permission"
 
                 }
 

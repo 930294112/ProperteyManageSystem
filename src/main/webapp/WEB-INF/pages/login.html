@@ -88,11 +88,12 @@
     }
 
     function login() {
+        var code = $("#verifyCode").val()
        $.ajax({
            type: "post",
            url: "/checkVerifyCode",
            data: {
-               code: $("#verifyCode").val()
+               code:code
            }, success: function (result) {
                if (result.count == 1) {
                    layer.msg('登录失败 ' + '验证码错误', {icon: 2, time: 3000})
@@ -102,8 +103,7 @@
                        url: "/loginsubmit",
                        data: {
                            username: $("#username").val(),
-                           password: $("#password").val(),
-                           code: $("#verifyCode").val()
+                           password: $("#password").val()
                        }, success: function (result) {
                            if (result.count == 1) {
                                layer.msg('登录失败 ' + result.message, {icon: 2, time: 3000})

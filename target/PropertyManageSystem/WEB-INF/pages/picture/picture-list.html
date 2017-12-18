@@ -199,7 +199,7 @@
     findAllPicture(1,3);
 	function findAllPicture(pageNum, pageSize) {
         $.ajax({
-            url: "/findAllPicture",
+            url: "/picture/findAllPicture",
             data: {
                 pageNum: pageNum,
                 pageSize: pageSize
@@ -210,7 +210,7 @@
                 $("#page").html("");
                 //调用分页方法
                 //传入两个参数 一个结果集 一个地址
-                showPage(result, "/findAllPicture")
+                showPage(result, "/picture/findAllPicture")
                 $.each(list, function (i, Elp) {
                     addNewTR(Elp)
                 })

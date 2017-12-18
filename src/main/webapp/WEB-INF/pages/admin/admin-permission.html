@@ -186,7 +186,7 @@
     //分页
     function pageAllMenu(info, pageNum, pageSize) {
         $.ajax({
-            url: "/pageAllMenu",
+            url: "/menu/pageAllMenu",
             data: {
                 info: info == null ? 0 : info,
                 pageNum: pageNum,
@@ -198,7 +198,7 @@
                 $("#page").html("");
                 //调用分页方法
                 //传入两个参数 一个结果集 一个地址
-                showPage(result, "/pageAllMenu")
+                showPage(result, "/menu/pageAllMenu")
                 $.each(list, function (i, Elp) {
                     addNewTR(Elp)
                 })
@@ -227,13 +227,13 @@
     }
     /*管理员-权限-添加*/
     function admin_permission_add() {
-        location.href = "/admin/admin-permission-add"
+        location.href = "/menu/admin-permission-add"
 
     }
     /*管理员-权限-编辑*/
     function admin_permission_edit() {
         var menuid = $(this).attr("editId")
-        location.href = "/admin/admin_permission_edie?menuid=" + menuid;
+        location.href = "/menu/admin_permission_edie?menuid=" + menuid;
 
 
     }
@@ -244,7 +244,7 @@
         layer.confirm('确定要删除此角色吗？', function (index) {
             $.ajax({
                 type: 'POST',
-                url: '/admin/admin_permission_del',
+                url: '/menu/admin_permission_del',
                 data: {
                     id: deleteId
                 },
@@ -274,7 +274,7 @@
            } else {
                 $.ajax({
                     type: "post",
-                    url: "/admin/datadelMenu",
+                    url: "/menu/datadelMenu",
                     data: {
                         deleteIds: deleteIds
                     }, success: function (result) {
@@ -299,7 +299,7 @@
 
     function pageMenuQuery(menuName, pageNum, pageSize) {
         $.ajax({
-            url: "/pageMenuQuery",
+            url: "/menu/pageMenuQuery",
             data: {
                 "name": menuName, "pageNum": pageNum, "pageSize": pageSize
             },
@@ -309,7 +309,7 @@
                 $("#tab").html("");
                 $("#page").html("");
 
-                showPage(result, choose, "/pageMenuQuery")
+                showPage(result, choose, "/menu/pageMenuQuery")
                 $.each(list, function (i, Elp) {
                     addNewTR(Elp)
                 })

@@ -104,7 +104,7 @@
     pageAllUser(1, 3)
     function pageAllUser(pageNum, pageSize) {
         $.ajax({
-            url: "/pageAllUser",
+            url: "/user/pageAllUser",
             data: {
 
                 pageNum: pageNum,
@@ -116,7 +116,7 @@
                 $("#page").html("");
                 //调用分页方法
                 //传入两个参数 一个结果集 一个地址
-                showPage(result, "/pageAllUser")
+                showPage(result, "/user/pageAllUser")
                 $.each(list, function (i, Elp) {
                     addNewTR(Elp)
                 })
@@ -198,7 +198,7 @@
 
     /*管理员-增加*/
     function admin_add() {
-        location.href = "/admin/admin-add"
+        location.href = "/user/admin-add"
 
     }
     /*管理员-删除*/
@@ -207,7 +207,7 @@
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
                 type: 'POST',
-                url: '/admin/admin_del',
+                url: '/user/admin_del',
                 data: {
                     id: id
                 },
@@ -234,7 +234,7 @@
             } else {
                 $.ajax({
                         type: "post",
-                        url: "/databath",
+                        url: "/user/databath",
                         data: {
                             deleteIds: deleteIds
                         }, success: function (result) {
@@ -267,7 +267,7 @@
                 layer.confirm('确认要停用吗?', function (index) {
                     $.ajax({
                         type: "post",
-                        url: "/admin_changeState",
+                        url: "/user/admin_changeState",
                         data: {
                             id: id,
                             state: state
@@ -283,7 +283,7 @@
                 layer.confirm('确认要启用吗？', function (index) {
                     $.ajax({
                         type: "post",
-                        url: "/admin_changeState",
+                        url: "/user/admin_changeState",
                         data: {
                             id: id,
                             state: state
@@ -308,7 +308,7 @@
     }
     function findPageUser(username,datemin,datemax,pageNum, pageSize) {
         $.ajax({
-            url: "/findPageAll",
+            url: "/user/findPageAll",
             data: {
                 username:username,
                 datemin:datemin,
@@ -321,7 +321,7 @@
                 $("#tab").html("");
                 $("#page").html("");
                 //调用分页方法
-                showPage(result, "/findPageAll")
+                showPage(result, "/user/findPageAll")
                 $.each(list, function (i, Elp) {
                     addNewTR(Elp)
                 })

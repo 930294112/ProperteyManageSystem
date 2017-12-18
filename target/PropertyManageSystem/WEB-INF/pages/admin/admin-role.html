@@ -114,14 +114,14 @@
     //	});
     /*管理员-角色-添加*/
     function admin_role_add() {
-        location.href = "/admin/admin-role-add"
+        location.href = "/role/admin-role-add"
 
 
     }
     /*管理员-角色-编辑*/
     function admin_role_edit() {
         var roleid = $(this).attr("editId")
-        location.href = "/admin/admin-role-edit?roleid=" + roleid
+        location.href = "/role/admin-role-edit?roleid=" + roleid
     }
 
 
@@ -151,7 +151,7 @@
             } else {
                 if (r) {
                     $.ajax({
-                        url: "admin/datadel",
+                        url: "/role/datadel",
                         data: {
                             del: a
                         },
@@ -191,7 +191,7 @@
             function findpageAll(info, pageNum, pageSize) {
 
                 $.ajax({
-                    url: "/findpageAll",
+                    url: "/role/findpageAll",
                     data: {
                         info: info == null ? 0 : info,
                         "pageNum": pageNum,
@@ -202,7 +202,7 @@
                         $("#tab").html("");
                         $("#page").html("");
 
-                        showPage(result, "/findpageAll")
+                        showPage(result, "/role/findpageAll")
                         $.each(list, function (i, Elp) {
                             addNewTR(Elp)
                         })
@@ -241,7 +241,7 @@
             //分页+高级查询
             function pageAll(roleName, pageNum, pageSize) {
                 $.ajax({
-                    url: "/pageAll",
+                    url: "/role/pageAll",
                     data: {
                         "name": roleName, "pageNum": pageNum, "pageSize": pageSize
                     },
@@ -252,7 +252,7 @@
                         $("#tab").html("");
                         $("#page").html("");
 
-                        showPage(result, choose, "/pageAll")
+                        showPage(result, choose, "/role/pageAll")
 //				for (var i= 0;i<list.length;i++){
 //				 addNewTR(list[i].name, list[i].create_time, list[i].user.username, list[i].sort, list[i].status)
 //				}
@@ -348,7 +348,7 @@
                 var deleteId = $(this).attr("deleteId");
                 layer.confirm('确定要删除此角色吗？', function (index) {
                     $.ajax({
-                        url: "admin/deleteTheRole",
+                        url: "/role/deleteTheRole",
                         data: {
                             id: deleteId
                         },

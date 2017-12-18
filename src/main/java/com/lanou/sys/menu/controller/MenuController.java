@@ -24,7 +24,7 @@ import java.util.Map;
  * Created by dllo on 17/12/5.
  */
 @Controller
-
+@RequestMapping(value = "/menu")
 public class MenuController {
 
     @Resource
@@ -97,7 +97,7 @@ public class MenuController {
         return pageInfo;
     }
 
-    @RequestMapping(value = "admin/admin-permission-add")
+    @RequestMapping(value = "/admin-permission-add")
     public String admin_permission_add(){
         return "admin/admin-permission-add";
     }
@@ -110,7 +110,7 @@ public class MenuController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "admin/admin-permission-save")
+    @RequestMapping(value = "/admin-permission-save")
     public AjaxResult<Menu> admin_permission_save(Menu menu){
 
         System.out.println(menu);
@@ -132,7 +132,7 @@ public class MenuController {
 
 
     @ResponseBody
-    @RequestMapping(value = "admin/admin_permission_del")
+    @RequestMapping(value = "/admin_permission_del")
     public AjaxResult admin_permission_del(@RequestParam("id") Integer id){
         AjaxResult<Menu> result = new AjaxResult<Menu>();
         int count = menuService.deleteByMenuId(id);
@@ -141,7 +141,7 @@ public class MenuController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "admin/datadelMenu")
+    @RequestMapping(value = "/datadelMenu")
     public AjaxResult datadelMenu(@RequestParam("deleteIds[]") Integer[] deleteIds ){
         System.out.println(deleteIds);
         AjaxResult<Menu> result = new AjaxResult<Menu>();
@@ -152,7 +152,7 @@ public class MenuController {
         return result;
     }
 
-    @RequestMapping(value = "admin/admin_permission_edie")
+    @RequestMapping(value = "/admin_permission_edie")
     public String admin_permission_edie(@RequestParam("menuid") Integer menuid,HttpSession session){
         Menu menu = menuService.findByMenuId(menuid);
         session.setAttribute("menu",menu);
@@ -173,7 +173,7 @@ public class MenuController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/admin/admin-permission-editSave")
+    @RequestMapping(value = "/admin-permission-editSave")
     public AjaxResult<Menu> admin_permission_editSave(Menu menu,HttpSession session){
         Menu menuEdit = (Menu) session.getAttribute("menu");
         AjaxResult<Menu> result = new AjaxResult<Menu>();

@@ -228,7 +228,7 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/checkVerifyCode")
-    public AjaxResult checkVerifyCode(String code, HttpServletRequest request) {
+    public AjaxResult checkVerifyCode(@RequestParam("code") String code, HttpServletRequest request) {
         AjaxResult ajaxResult = new AjaxResult();
         String verifyCode = (String) request.getSession().getAttribute("verifyCode");
         if (!verifyCode.equalsIgnoreCase(code)) {
@@ -239,7 +239,7 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping(value = "/loginsubmit")
-    public AjaxResult<User> loginsubmit(User user, @RequestParam("code") String code, HttpServletRequest request, HttpSession session) throws Exception {
+    public AjaxResult<User> loginsubmit(User user, HttpServletRequest request, HttpSession session) throws Exception {
         AjaxResult<User> result = new AjaxResult<User>();
         //如果在shirospring的配置文件中,配置了表单认证过滤器,那么在这个方法中只需要处理异常即可
         String exClassName = (String) request.getAttribute("shiroLoginFailure");

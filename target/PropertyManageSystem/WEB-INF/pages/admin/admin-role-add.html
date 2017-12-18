@@ -104,7 +104,7 @@
     function findAllMenu() {
         $.ajax({
             type: "post",
-            url: "/findAllMenu",
+            url: "/role/findAllMenu",
             success: function (result) {
                 $.each(result, function (i, menu) {
                     $("#menuName").append($("<li></li>").append(menu.name).append($("<input type='checkbox' name='test'/>").attr("value", menu.id).attr("id",menu.id)));
@@ -125,7 +125,7 @@
         }
         $.ajax({
             type: "post",
-            url: "/admin/admin-role-save",
+            url: "/role/admin-role-save",
             data: {
                 name: $("#name").val(),
                 status: $("input:radio:checked").val(),
@@ -134,7 +134,7 @@
             }, success: function (result) {
                 if (result.count > 0) {
                     layer.msg('添加成功!', {icon: 1, time: 6000});
-                    location.href = "/admin-role"
+                    location.href = "/role/admin-role"
 
                 }
             }

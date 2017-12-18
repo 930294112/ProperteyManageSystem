@@ -26,6 +26,7 @@ import java.util.List;
  * Created by dllo on 17/12/6.
  */
 @Controller
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Resource
@@ -65,7 +66,7 @@ public class UserController {
      * 调到用户增加的界面
      * @return
      */
-    @RequestMapping(value = "admin/admin-add")
+    @RequestMapping(value = "/admin-add")
     public String admin_add(){
         return "/admin/admin-add";
     }
@@ -88,7 +89,7 @@ public class UserController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "admin/admin-save")
+    @RequestMapping(value = "/admin-save")
     public AjaxResult<User> admin_save(User user,String password2){
         AjaxResult<User> result = new AjaxResult<User>();
         if(user.getPassword().equals(password2)){
@@ -108,16 +109,7 @@ public class UserController {
         return result;
     }
 
-    /**
-     * 查询所有的菜单
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/findAllMenu")
-    public List<Menu> findAllMenu(){
-        List<Menu> menus = menuService.findAllMenu();
-        return menus;
-    }
+
 
     /**
      * 改变的状态
@@ -141,7 +133,7 @@ public class UserController {
      */
 
     @ResponseBody
-    @RequestMapping(value = "admin/admin_del")
+    @RequestMapping(value = "/admin_del")
     public AjaxResult<User> admin_del(@RequestParam("id") Integer id){
         AjaxResult<User> result = new AjaxResult<User>();
         int count = userService.deleteById(id);

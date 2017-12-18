@@ -139,7 +139,7 @@
     function showResult() {
         $.ajax({
             type:"get",
-            url:"/admin/admin-permission-editSave",
+            url:"/menu/admin-permission-editSave",
             data:{
                 name:$("#menuName").val(),
                 urlkey:$("#urlkey").val(),
@@ -151,7 +151,7 @@
             },success:function (result) {
                 if (result.count > 0){
                     layer.msg('保存成功!', {icon: 1, time: 6000});
-                    location.href = "/admin-permission"
+                    location.href = "/menu/admin-permission"
                 }
 
             }
@@ -162,7 +162,7 @@
     function editShow() {
         $.ajax({
             type:"post",
-            url:"/findMenu",
+            url:"/menu/findMenu",
             success:function (result) {
                 $("#menuName").attr("value",result.map.menu.name);
                 $("#urlkey").attr("value",result.map.menu.urlkey);

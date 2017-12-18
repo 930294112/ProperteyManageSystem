@@ -169,7 +169,7 @@
     function findAllRole() {
         $.ajax({
             type: "post",
-            url: "/findAllAdminRole",
+            url: "/user/findAllAdminRole",
             success: function (result) {
                 $.each(result, function (i, role) {
                     $("#adminRole").append($("<option></option>").append(role.name).attr("value",role.id));
@@ -184,7 +184,7 @@
 
         $.ajax({
             type:"post",
-            url:"/admin/admin-save",
+            url:"/user/admin-save",
             data:{
                 username:$("#adminName").val(),
                 password:$("#password").val(),
@@ -195,7 +195,7 @@
             },success:function (result) {
                 if (result.count>0){
                     layer.msg('添加成功!', {icon: 1, time: 2000});
-                   location.href="/admin_list"
+                    window.location.href="/user/admin-list"
                 }
             }
         })

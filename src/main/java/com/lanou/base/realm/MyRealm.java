@@ -1,15 +1,21 @@
 package com.lanou.base.realm;
 
+import com.lanou.sys.role.bean.Role;
 import com.lanou.sys.user.bean.User;
 import com.lanou.sys.user.mapper.UserMapper;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.apache.shiro.web.filter.mgt.DefaultFilter.roles;
 
 /**
  * Created by dllo on 17/12/11.
@@ -36,9 +42,32 @@ public class MyRealm extends AuthorizingRealm {
      * @return
      */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        String username = (String) principalCollection.getPrimaryPrincipal();
 
-        
-        return null;
+        //2.从数据库中获取该用户的所有角色和权限
+
+        //============>模拟数据<===================
+        User user =userMapper.findUserByName(username);
+          Role role = user.getRole();
+
+        List<String> roleList = new ArrayList<String>();
+        roleList.add(role.getName());
+
+
+        List<String> perList = new ArrayList<String>();
+        perList.add("user:create");
+        perList.add("user:query");
+
+
+        //============>模拟结束<===================
+
+        //3.将获取的角色和权限统一起来
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        info.addRoles(roleList);
+        info.addStringPermissions(perList);
+
+        return info;
+
     }
 
 

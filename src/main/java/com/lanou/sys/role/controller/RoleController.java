@@ -22,6 +22,7 @@ import java.util.Map;
  * Created by dllo on 17/12/5.
  */
 @Controller
+@RequestMapping(value = "/role")
 public class RoleController {
 
     @Resource
@@ -69,13 +70,13 @@ public class RoleController {
 
 
     //角色添加
-    @RequestMapping(value = "admin/admin-role-add")
+    @RequestMapping(value = "/admin-role-add")
     public String add() {
         return "admin/admin-role-add";
     }
 
     @ResponseBody
-    @RequestMapping(value = "admin/admin-role-save")
+    @RequestMapping(value = "/admin-role-save")
     public AjaxResult<Role> admin_role_save(@RequestParam("menuIds[]") Integer[] menuIds,Role role) {
         AjaxResult<Role> result = new AjaxResult<Role>();
         role.setCreate_time(new Timestamp(System.currentTimeMillis()));
@@ -88,7 +89,7 @@ public class RoleController {
 
     //删除
     @ResponseBody
-    @RequestMapping(value = "admin/deleteTheRole")
+    @RequestMapping(value = "/deleteTheRole")
     public boolean deleteTheRole(@RequestParam("id") Integer id) {
         return roleService.deleteTheRole(id);
     }
@@ -96,7 +97,7 @@ public class RoleController {
 
     //批量删除
     @ResponseBody
-    @RequestMapping(value = "admin/datadel")
+    @RequestMapping(value = "/datadel")
     public boolean del(@RequestParam("del") String del) {
 //          1,2,3
         System.out.println("del=======>" + del);
@@ -105,7 +106,7 @@ public class RoleController {
     }
 
     //调到编辑的页面
-    @RequestMapping(value = "admin/admin-role-edit")
+    @RequestMapping(value = "/admin-role-edit")
     public String admin_role_edit(@RequestParam("roleid") Integer roleid,HttpSession session){
         Role role = roleService.findRoleById(roleid);
         System.out.println(role.getMenus());
@@ -133,6 +134,17 @@ public class RoleController {
     }
 
     /**
+     * 查询所有的菜单
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/findAllMenu")
+    public List<Menu> findAllMenu(){
+        List<Menu> menus = menuService.findAllMenu();
+        return menus;
+    }
+
+    /**
      * 编辑保存
      * @param menuIds 编辑的id
      * @param role
@@ -140,7 +152,7 @@ public class RoleController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/admin/admin-role-editSave")
+    @RequestMapping(value = "/admin-role-editSave")
     public AjaxResult<Role> admin_role_editSave(@RequestParam("menuIds[]") Integer[] menuIds,Role role,HttpSession session){
         AjaxResult<Role> result = new AjaxResult<Role>();
         Role editRole = (Role) session.getAttribute("role");
