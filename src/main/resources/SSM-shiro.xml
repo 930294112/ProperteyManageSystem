@@ -46,15 +46,15 @@
                 <!--必须要有管理员(admin)身份才可以进行访问-->
                 <!--roles[XX] 代表 有XX角色可以访问-->
 
-                /role/* = roles[sysAdmin],authc
-                /role/* = roles[testAdmin],authc
-                /menu/* = roles[sysAdmin],authc
-                /menu/* = roles[testAdmin],authc
+                /role/* = roles[权限管理员],authc
+                <!--/role/* = roles[testAdmin],authc-->
+                /menu/* = roles[权限管理员],authc
+                <!--/menu/* = roles[testAdmin],authc-->
 
-                /user/* = roles[sysAdmin],authc
-                /user/* = roles[testAdmin],authc
-                /picture/* = roles[pictureAdmin],authc
-                /picture/* = roles[testAdmin],authc
+                /user/* = roles[权限管理员],authc
+                <!--/user/* = roles[testAdmin],authc-->
+                /picture/* = roles[图片管理员],authc
+                <!--/picture/* = roles[testAdmin],authc-->
 
 
 

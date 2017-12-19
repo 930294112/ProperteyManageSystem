@@ -60,4 +60,15 @@
 
 
 
+    <select id="findByRoleIds" resultMap="roleMap" parameterType="java.util.List">
+        SELECT *FROM sys_role  WHERE
+        <foreach collection="list" item="id" open="sys_role.id in(" close=")" separator=",">
+            #{id}
+        </foreach>
+
+
+    </select>
+
+
+
 </mapper>

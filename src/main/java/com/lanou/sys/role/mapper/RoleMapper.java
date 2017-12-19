@@ -26,4 +26,6 @@ public interface RoleMapper {
     int findMaxRoleId();
 
     int updateRoleById(Role role);
+
+    List<Role> findByRoleIds(List<Integer> roleIds);
 }

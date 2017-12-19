@@ -217,6 +217,7 @@ public class MainController {
         return "login";
     }
 
+
     @RequestMapping(value = "/getVerifyCode")
     public void getVerifyCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
         VerifyCode verifyCode = new VerifyCode();

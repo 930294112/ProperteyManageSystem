@@ -43,10 +43,10 @@ public class RoleController {
 
         if (!role.getName().equals("5")) {
             session.setAttribute("role", role);
-            roleGJ = roleService.GJqueryPage(role, pageNum, pageSize);
+            roleGJ = roleService.GJqueryPage(role, pageNum, pageSize,session);
         } else {
             Role role1 = (Role) session.getAttribute("role");
-            roleGJ = roleService.GJqueryPage(role1, pageNum, pageSize);
+            roleGJ = roleService.GJqueryPage(role1, pageNum, pageSize,session);
         }
         return roleGJ;
     }

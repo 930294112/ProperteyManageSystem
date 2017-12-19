@@ -11,9 +11,13 @@ import com.lanou.sys.role.mapper.RoleMapper;
 import com.lanou.sys.role.service.RoleService;
 import com.lanou.sys.user.bean.User;
 import com.lanou.sys.user.mapper.UserMapper;
+import com.lanou.util.Index;
+import com.lanou.util.Search;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,15 +91,52 @@ public class RoleServiceImpl implements RoleService {
         return true;
     }
 
+
     //高级搜索
-    public PageInfo<Role> GJqueryPage(Role role, Integer pageNum, Integer pageSize) {
+    public PageInfo<Role> GJqueryPage(Role role, Integer pageNum, Integer pageSize,HttpSession session) {
+
+        //先调索引 和搜索
+
+        Index index = new Index();
+        try {
+            index.index();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        Search search = new Search();
+        search.search(role.getName(),session);
+
+
+        //根据id查询 再char转为integer
+        List roleIds = (List) session.getAttribute("roleId");
+        System.out.println("roleIds"+roleIds);
+
+        List<Integer> list1 = new ArrayList<Integer>();
+
+
+        for (int i = 0; i < roleIds.size(); i++) {
+            String s = String.valueOf(roleIds.get(i));
+            Integer roleId = Integer.valueOf(s);
+
+            list1.add(roleId);
+
+
+        }
+
+        //再调分页 变成page 集合
         pageNum = pageNum == null ? 1 :pageNum;
         pageSize = pageSize == null ? 3 :pageSize;
         PageHelper.startPage(pageNum,pageSize);
 
-        List<Role> all = roleMapper.findAllGJ(role);
+//        List<Role> all = roleMapper.findAllGJ(role);
 
-        PageInfo<Role> rolePageInfo = new PageInfo<Role>(all);
+        List<Role> byRoleIds = roleMapper.findByRoleIds(list1);
+
+
+
+        PageInfo<Role> rolePageInfo = new PageInfo<Role>(byRoleIds);
 
         return rolePageInfo;
     }

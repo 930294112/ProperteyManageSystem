@@ -55,8 +55,8 @@
     <welcome-file>/WEB-INF/pages/login.html</welcome-file>
   </welcome-file-list>
 
-  <!--<error-page>-->
-  <!--<error-code>404</error-code>-->
-  <!--<location>/WEB-INF/pages/page/404.html</location>-->
-<!--</error-page>-->
+  <error-page>
+  <error-code>401</error-code>
+  <location>/WEB-INF/pages/page/404.html</location>
+</error-page>
 </web-app>

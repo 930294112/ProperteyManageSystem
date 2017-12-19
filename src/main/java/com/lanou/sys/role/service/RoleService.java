@@ -3,6 +3,7 @@ package com.lanou.sys.role.service;
 import com.github.pagehelper.PageInfo;
 import com.lanou.sys.role.bean.Role;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public interface RoleService {
 
     boolean deleteTheRole(Integer id);
 
-    PageInfo<Role> GJqueryPage(Role role, Integer pageNum, Integer pageSize);
+    PageInfo<Role> GJqueryPage(Role role, Integer pageNum, Integer pageSize, HttpSession session);
 
     boolean datadel(String del);
 
