@@ -102,10 +102,7 @@ public class Search  {
                     }else {
                         System.out.println("结果"+hContent);
 
-
-
                         String[]  strs= hContent.split(",");
-
                         System.out.println("截取+++++"+strs[2].toString());
 
 
@@ -113,9 +110,7 @@ public class Search  {
                         String s = split[1].toString();
 
 
-
                         System.out.println("截取02+++"+ s);
-
                         arrayList.add(s);
 
 //   过时啦 有问题

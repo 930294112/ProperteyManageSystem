@@ -40,6 +40,7 @@ public class PictureServiceImpl implements PictureService {
      * @return
      */
     public int save(Picture picture) {
+
         return pictureMapper.save(picture);
     }
 }

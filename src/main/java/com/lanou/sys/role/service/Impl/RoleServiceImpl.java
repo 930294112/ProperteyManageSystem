@@ -115,14 +115,10 @@ public class RoleServiceImpl implements RoleService {
 
         List<Integer> list1 = new ArrayList<Integer>();
 
-
         for (int i = 0; i < roleIds.size(); i++) {
             String s = String.valueOf(roleIds.get(i));
             Integer roleId = Integer.valueOf(s);
-
             list1.add(roleId);
-
-
         }
 
         //再调分页 变成page 集合
@@ -133,8 +129,6 @@ public class RoleServiceImpl implements RoleService {
 //        List<Role> all = roleMapper.findAllGJ(role);
 
         List<Role> byRoleIds = roleMapper.findByRoleIds(list1);
-
-
 
         PageInfo<Role> rolePageInfo = new PageInfo<Role>(byRoleIds);
 
