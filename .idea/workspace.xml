@@ -2,77 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="545b158b-91ab-4229-a26d-ec507718e1a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem.war" afterPath="$PROJECT_DIR$/target/PropertyManageSystem.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/base/realm/MyRealm.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/base/realm/MyRealm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/bean/Album.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/bean/Album.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/controller/AlbumController.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/controller/AlbumController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/mapper/AlbumMapper.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/mapper/AlbumMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/service/AlbumService.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/service/AlbumService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/service/impl/AlbumServiceImpl.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/album/service/impl/AlbumServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/bean/Menu.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/bean/Menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/bean/RoleMenu.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/bean/RoleMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/controller/MenuController.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/controller/MenuController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/mapper/MenuMapper.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/mapper/MenuMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/mapper/RoleMenuMapper.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/mapper/RoleMenuMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/service/MenuService.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/service/MenuService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/service/impl/MenuServiceImpl.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/menu/service/impl/MenuServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/bean/Picture.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/bean/Picture.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/controller/PictureController.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/controller/PictureController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/mapper/PictureMapper.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/mapper/PictureMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/service/PictureService.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/service/PictureService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/service/impl/PictureServiceImpl.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/picture/service/impl/PictureServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/role/bean/Role.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/role/bean/Role.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/role/service/Impl/RoleServiceImpl.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/role/service/Impl/RoleServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/bean/Tags.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/bean/Tags.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/controller/TagsController.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/controller/TagsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/mapper/TagsMapper.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/mapper/TagsMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/service/TagsService.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/service/TagsService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/service/impl/TagsServiceImpl.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/tags/service/impl/TagsServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/bean/User.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/bean/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/bean/ext/ExtUser.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/bean/ext/ExtUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/controller/UserController.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/mapper/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/service/Impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/service/Impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/service/UserService.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/sys/user/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/util/AjaxResult.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/util/AjaxResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/util/VerifyCode.class" afterPath="$PROJECT_DIR$/target/PropertyManageSystem/WEB-INF/classes/com/lanou/util/VerifyCode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/base/realm/MyRealm.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/base/realm/MyRealm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/bean/Album.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/bean/Album.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/controller/AlbumController.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/controller/AlbumController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/mapper/AlbumMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/mapper/AlbumMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/service/AlbumService.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/service/AlbumService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/service/impl/AlbumServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/album/service/impl/AlbumServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/bean/Menu.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/bean/Menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/bean/RoleMenu.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/bean/RoleMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/controller/MenuController.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/controller/MenuController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/mapper/MenuMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/mapper/MenuMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/mapper/RoleMenuMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/mapper/RoleMenuMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/service/MenuService.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/service/MenuService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/service/impl/MenuServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/menu/service/impl/MenuServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/bean/Picture.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/bean/Picture.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/controller/PictureController.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/controller/PictureController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/mapper/PictureMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/mapper/PictureMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/service/PictureService.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/service/PictureService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/service/impl/PictureServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/picture/service/impl/PictureServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/role/bean/Role.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/role/bean/Role.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/role/service/Impl/RoleServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/role/service/Impl/RoleServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/bean/Tags.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/bean/Tags.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/controller/TagsController.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/controller/TagsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/mapper/TagsMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/mapper/TagsMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/service/TagsService.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/service/TagsService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/service/impl/TagsServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/tags/service/impl/TagsServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/bean/User.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/bean/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/bean/ext/ExtUser.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/bean/ext/ExtUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/mapper/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/service/Impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/service/Impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/sys/user/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/util/AjaxResult.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/util/AjaxResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/lanou/util/VerifyCode.class" afterPath="$PROJECT_DIR$/target/classes/com/lanou/util/VerifyCode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/lanou/sys/picture/service/impl/PictureServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/lanou/sys/picture/service/impl/PictureServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/lanou/sys/role/service/Impl/RoleServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/lanou/sys/role/service/Impl/RoleServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/lanou/util/Search.java" afterPath="$PROJECT_DIR$/src/main/java/com/lanou/util/Search.java" />
     </list>
     <ignored path="PropertyManageSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -208,19 +139,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PictureMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lanou/sys/picture/mapper/PictureMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="135" lean-forward="false" selection-start-line="8" selection-start-column="135" selection-end-line="8" selection-end-column="135" />
-              <folding>
-                <marker date="1513302707000" expanded="true" signature="337:466" ph="INSERT INTO picture... " />
-                <marker date="1513302707000" expanded="true" signature="590:611" ph="SELECT * FRO... picture" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PictureServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lanou/sys/picture/service/impl/PictureServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -275,11 +193,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoleServiceImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RoleServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lanou/sys/role/service/Impl/RoleServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-158">
-              <caret line="97" column="18" lean-forward="false" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
+            <state relative-caret-position="322">
+              <caret line="121" column="9" lean-forward="true" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -399,7 +327,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/lanou/sys/picture/service/PictureService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lanou/sys/picture/mapper/PictureMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lanou/sys/album/service/AlbumService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lanou/sys/album/service/impl/AlbumServiceImpl.java" />
@@ -450,6 +377,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lanou/util/Search.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lanou/sys/role/service/Impl/RoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lanou/sys/picture/service/impl/PictureServiceImpl.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -483,8 +411,8 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="50" />
-    <option name="y" value="133" />
+    <option name="x" value="1" />
+    <option name="y" value="37" />
     <option name="width" value="1870" />
     <option name="height" value="899" />
   </component>
@@ -2335,7 +2263,7 @@
       <workItem from="1513563506358" duration="1363000" />
       <workItem from="1513566532995" duration="3410000" />
       <workItem from="1513577387327" duration="19786000" />
-      <workItem from="1513666561755" duration="27000" />
+      <workItem from="1513666561755" duration="707000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交&#10;">
       <created>1512454447374</created>
@@ -2400,14 +2328,21 @@
       <option name="project" value="LOCAL" />
       <updated>1513652483789</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="作者:高鹏 最终&#10;时间:2017-12-19">
+      <created>1513666619843</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1513666619843</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="351764000" />
+    <option name="totallyTimeSpent" value="352444000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="50" y="133" width="1870" height="899" extended-state="0" />
+    <frame x="1" y="37" width="1870" height="899" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2780,6 +2715,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="147" column="16" lean-forward="true" selection-start-line="147" selection-start-column="16" selection-end-line="147" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2828,14 +2764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-237">
           <caret line="95" column="49" lean-forward="false" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3040,8 +2968,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lanou/sys/role/service/Impl/RoleServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-158">
-          <caret line="97" column="18" lean-forward="false" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
+        <state relative-caret-position="322">
+          <caret line="121" column="9" lean-forward="true" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
